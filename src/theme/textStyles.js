@@ -5,7 +5,7 @@ const textStyles = {
     fontWeight: 500,
     letterSpacing: '.05em',
   },
-  history2: {
+  h2: {
     fontSize: { base: '24px', lg: '28px' },
     lineHeight: '1.5',
     fontWeight: 500,
