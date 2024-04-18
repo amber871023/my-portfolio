@@ -10,20 +10,18 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Header />
-        <main style={{ minHeight: "calc(100vh - 210px)" }}>
-          {/* Adjust 210px according to  header and footer height */}
-          <Routes>
-            {/* Use Routes component for defining routes */}
-            <Route path="/" exact element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/resume" element={<Resume />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+      <Header />
+      <main style={{ minHeight: "calc(100vh - 210px)" }}>
+        {/* Adjust 210px according to  header and footer height */}
+        <Routes>
+          {/* Use Routes component for defining routes */}
+          <Route path="/" exact element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/resume" element={<Resume />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+        </Routes>
+      </main>
+      <Footer />
     </Router >
   );
 }
