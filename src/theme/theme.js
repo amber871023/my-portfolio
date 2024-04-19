@@ -17,8 +17,8 @@ const theme = extendTheme({
     }
   },
   fonts: {
-    body: "Roboto, Noto Sans TC, sans-serif", // Custom font for body text
-    heading: "Montserrat, Noto Sans TC, sans-serif", // Custom font for headings
+    body: "ADLaM Display,Roboto, Noto Sans TC, sans-serif", // Custom font for body text
+    heading: "ADLaM Display,Montserrat, Noto Sans TC, sans-serif", // Custom font for headings
   },
   textStyles: {
     ...textStyles,

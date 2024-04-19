@@ -1,7 +1,7 @@
 import { Box, Container, Stack, Image, Button, Text, HStack, VStack, Spacer, Heading, IconButton, Link } from '@chakra-ui/react'
 import logo from '../assets/logo_white.png';
 import { Link as RouterLink } from 'react-router-dom';
-import { FaEnvelope, FaLinkedin, FaInstagram, FaFacebookSquare } from 'react-icons/fa';
+import { FaEnvelope, FaLinkedin, FaGithub, FaInstagram, FaFacebookSquare } from 'react-icons/fa';
 
 const MenuItems = ['About', 'Resume', 'Portfolio'];
 export default function Footer() {
@@ -30,6 +30,9 @@ export default function Footer() {
             <Link href='www.linkedin.com/in/amber-cheng-202396227' isExternal>
               <IconButton icon={<FaLinkedin />} aria-label="LinkedIn" colorScheme='primary.500' fontSize='30px' />
             </Link>
+            <Link href="https://github.com/amber871023" isExternal>
+              <IconButton icon={<FaGithub />} aria-label="Github" colorScheme='primary.500' fontSize='30px' />
+            </Link>
             <Link href="https://www.facebook.com/amberCYT" isExternal>
               <IconButton icon={<FaFacebookSquare />} aria-label="Facebook" colorScheme='primary.500' fontSize='30px' />
             </Link>
@@ -54,9 +57,11 @@ export default function Footer() {
                 <span>n11422807@qut.edu.au</span>
               </Link>
             </HStack>
-
             <Link href='www.linkedin.com/in/amber-cheng-202396227' isExternal>
               <IconButton icon={<FaLinkedin />} aria-label="LinkedIn" colorScheme='primary.500' fontSize='30px' />
+            </Link>
+            <Link href="https://github.com/amber871023" isExternal>
+              <IconButton icon={<FaGithub />} aria-label="Github" colorScheme='primary.500' fontSize='30px' />
             </Link>
             <Link href="https://www.facebook.com/amberCYT" isExternal>
               <IconButton icon={<FaFacebookSquare />} aria-label="Facebook" colorScheme='primary.500' fontSize='30px' />
