@@ -7,6 +7,7 @@ import About from "./pages/About";
 import Resume from "./pages/Resume";
 import Portfolio from "./pages/Portfolio";
 import PortfolioPhotography from "./pages/PortfolioPhotography";
+import PortfolioProject from "./pages/PortfolioProject";
 import Footer from "./components/Footer";
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/portfolio" element={<Portfolio />} />
           {/* Add a dynamic route for portfolio items */}
           <Route path="/Portfolio/albums/:id" element={<PortfolioPhotography />} />
+          <Route path="/Portfolio/project/:name" element={<PortfolioProject />} />
         </Routes>
       </main>
       <Footer />
