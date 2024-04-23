@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Tabs, TabList, TabPanels, Tab, TabPanel, Flex, Box, Heading, Highlight, Select } from "@chakra-ui/react";
+import { Container, Tabs, TabList, TabPanels, Tab, TabPanel, Flex, Box, Heading, Highlight, Select, Text } from "@chakra-ui/react";
 import PhotoGallery from "../components/PhotoGallery";
+import ProjectList from "../components/ProjectList";
 
-export default function About() {
+export default function Portfolio() {
   const [albums, setAlbums] = useState([]);
   const [filteredAlbums, setFilteredAlbums] = useState([]);
   const [selectedOption, setSelectedOption] = useState('All');
@@ -87,14 +88,7 @@ export default function About() {
           </TabList>
           <TabPanels>
             <TabPanel>
-              <Flex justify='flex-end'>
-                <Select placeholder='Select option' w='25%' mb={3}>
-                  <option value='option1'>All</option>
-                  <option value='option2'>Option 2</option>
-                  <option value='option3'>Option 3</option>
-                </Select>
-              </Flex>
-              <p>GitHub Projects</p>
+              <ProjectList />
             </TabPanel>
             <TabPanel>
               <Flex justify='flex-end'>
@@ -106,6 +100,7 @@ export default function About() {
                   <option value='Animal'>Animal</option>
                   {/* Add other options as needed */}
                 </Select>
+                <Text></Text>
               </Flex>
               <PhotoGallery albums={filteredAlbums} />
             </TabPanel>
