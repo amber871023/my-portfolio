@@ -3,7 +3,6 @@ import introImg from "../assets/introImg.jpg";
 import WaveDivider from "../components/WaveDivider";
 import AboutInfoAccordion from "../components/AboutInfoAccordion";
 
-
 export default function About() {
   return (
     <><Box bg='primary.200'>
