@@ -118,22 +118,23 @@ const ProjectList = () => {
       {/* render filter repos */}
       <Grid templateColumns="repeat(auto-fit, minmax(300px, 1fr))" gap={4} align={'center'}>
         {filteredRepositories.map(repo => (
-          <GridItem key={repo.id} position="relative" borderRadius="lg" _hover={{ opacity: 0.7 }}>
-            <Box maxW={'sm'} h={'100%'} bg='white' boxShadow={'2xl'} rounded={'md'} p={6} overflow={'hidden'}>
-              <Box bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'} height={'300px'}>
-                <Image src={require(`../assets/projectImg/${repo.name}.png`)} alt={`${repo.name}`} objectFit={'cover'} h={'100%'} />
+          <Link as={NavLink} to={`/Portfolio/project/${repo.name}`}>
+            <GridItem key={repo.id} position="relative" borderRadius="lg" _hover={{ opacity: 0.7 }}>
+              <Box maxW={'sm'} h={'100%'} bg='white' boxShadow={'2xl'} rounded={'md'} p={6} overflow={'hidden'}>
+                <Box bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'} height={'300px'}>
+                  <Image src={require(`../assets/projectImg/${repo.name}.png`)} alt={`${repo.name}`} objectFit={'cover'} h={'100%'} />
+                </Box>
+                <Stack align={'flex-start'}>
+                  <Text color={'green.500'} textTransform={'uppercase'} fontWeight={800} fontSize={'sm'}>
+                    {languages[repo.id] && languages[repo.id].join(', ')}
+                  </Text>
+                  <Heading color='gray.700' fontSize={'2xl'} >
+                    {repo.name}
+                  </Heading>
+                </Stack>
               </Box>
-              <Stack align={'flex-start'}>
-                <Text color={'green.500'} textTransform={'uppercase'} fontWeight={800} fontSize={'sm'}>
-                  {languages[repo.id] && languages[repo.id].join(', ')}
-                </Text>
-                <Heading color='gray.700' fontSize={'2xl'} >
-                  <Link as={NavLink}
-                    to={`/Portfolio/project/${repo.name}`}>{repo.name}</Link>
-                </Heading>
-              </Stack>
-            </Box>
-          </GridItem>
+            </GridItem>
+          </Link>
         ))}
       </Grid>
     </>
