@@ -3,7 +3,7 @@ import { Container, Button, HStack, Tabs, TabList, TabPanels, Tab, TabPanel, Box
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowBackIcon } from '@chakra-ui/icons'
 
-export default function About() {
+export default function PortfolioPhotography() {
   const navigate = useNavigate(); // Use useNavigate hook 
   const handleReturn = () => {
     navigate(-1); //Take users back to the previous page
@@ -63,7 +63,7 @@ export default function About() {
         </Heading>
         <Tabs bg={'white'} rounded={'5px'} mt='10' isFitted colorScheme='primary'>
           <TabList>
-            <Tab py={3}>Photos</Tab>
+            <Tab py={3}>All Photos</Tab>
           </TabList>
           <HStack justify={'space-between'}>
             <Button leftIcon={<ArrowBackIcon />} onClick={handleReturn} mt={4} ml={4} colorScheme="primary"> Back to Portfolio</Button>
@@ -78,7 +78,7 @@ export default function About() {
                   <GridItem key={index}>
                     <Image src={photo.url} alt={`Photo ${index + 1}`} borderRadius='lg'
                       boxSize={'md'}
-                      objectFit="cover" // Optional: Ensure the entire image is visible, covering the grid cell
+                      objectFit="cover" //Ensure the entire image is visible, covering the grid cell
                     />
                   </GridItem>
                 ))}
