@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Tabs, TabList, TabPanels, Tab, TabPanel, Flex, Box, Heading, Highlight, Select, Text } from "@chakra-ui/react";
+import { Container, Tabs, TabList, TabPanels, Tab, TabPanel, Flex, Box, Heading, Highlight, Select } from "@chakra-ui/react";
 import PhotoGallery from "../components/PhotoGallery";
 import ProjectList from "../components/ProjectList";
 
@@ -18,7 +18,6 @@ export default function Portfolio() {
         console.error('Error fetching photo albums:', error);
       }
     };
-
     fetchAlbums();
   }, []);
 
@@ -42,14 +41,11 @@ export default function Portfolio() {
       const apiKey = process.env.REACT_APP_FLICKR_API_KEY;
       const userId = process.env.REACT_APP_FLICKR_USER_ID;
       const albumListUrl = `https://www.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=${apiKey}&user_id=${userId}&format=json&nojsoncallback=1`;
-
       const response = await fetch(albumListUrl);
       const data = await response.json();
-
       if (!data || !data.photosets || !data.photosets.photoset) {
         throw new Error('Invalid response format');
       }
-
       const albums = data.photosets.photoset;
       const albumDetails = await Promise.all(albums.map(async (album) => {
         const albumInfoUrl = `https://www.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=${apiKey}&photoset_id=${album.id}&user_id=${userId}&format=json&nojsoncallback=1`;
@@ -72,6 +68,7 @@ export default function Portfolio() {
       return null;
     }
   }
+
   return (
     <Box bg='primary.200'>
       <Container maxW={'7xl'} py={10}>
@@ -98,9 +95,7 @@ export default function Portfolio() {
                   <option value='Landscape'>Landscape</option>
                   <option value='People'>People</option>
                   <option value='Animal'>Animal</option>
-                  {/* Add other options as needed */}
                 </Select>
-                <Text></Text>
               </Flex>
               <PhotoGallery albums={filteredAlbums} />
             </TabPanel>
@@ -110,5 +105,3 @@ export default function Portfolio() {
     </Box >
   );
 }
-
-
