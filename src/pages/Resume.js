@@ -5,7 +5,6 @@ import EducationCard from "../components/EducationCard";
 import ExperienceCard from "../components/ExperienceCard";
 import { NavLink } from 'react-router-dom';
 
-
 export default function Resume() {
   const apiToken = process.env.REACT_APP_GITHUB_API_TOKEN;
   const username = process.env.REACT_APP_GITHUB_USER_NAME;

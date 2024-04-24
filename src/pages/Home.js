@@ -1,14 +1,4 @@
-import {
-  Container,
-  Stack,
-  Flex,
-  Box,
-  Heading,
-  Text,
-  Button,
-  Image,
-  Icon,
-} from "@chakra-ui/react";
+import { Container, Stack, Flex, Box, Heading, Text, Button, Image, Icon, } from "@chakra-ui/react";
 import hero from "../assets/hero.jpg";
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
@@ -47,11 +37,9 @@ export default function Home() {
           rounded="2xl"
           spacing={{ base: 4, md: 5 }}
           textAlign={{ base: "center", md: "left" }}
-          position={"relative"}
-          w={"full"}>
+          position={"relative"} w={"full"}>
           <Blob
-            w={{ base: "150%", md: "160%" }}
-            h={"200%"}
+            w={{ base: "150%", md: "160%" }} h={"200%"}
             position={"absolute"}
             bottom={"10%"}
             right={{ base: "30%", md: "45%" }}
@@ -100,8 +88,7 @@ export default function Home() {
             overflow={"hidden"}
           >
             <Image src={hero} alt={"Hero image"}
-              fit={"cover"}
-              align={"center"}
+              fit={"cover"} align={"center"}
               w={"100%"} h={"100%"} />
           </Box>
         </Flex>
