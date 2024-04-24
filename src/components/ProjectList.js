@@ -106,12 +106,10 @@ const ProjectList = () => {
           .filter((lang, index, self) => self.indexOf(lang) === index)
           .map((lang, index) => (
             <Checkbox
-              key={index}
-              value={lang}
+              key={index} value={lang}
               isChecked={selectedLanguages.includes(lang)}
               onChange={() => handleCheckboxChange(lang)}
-              mb={[0, 2]}
-              mr={[0, 4]}
+              mb={[0, 2]} mr={[0, 4]}
             >
               {lang}
             </Checkbox>
