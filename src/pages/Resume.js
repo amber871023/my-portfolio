@@ -1,10 +1,37 @@
-import { Container, Heading, Stack, VStack, HStack, Box, Text, Card, CardHeader, CardBody, StackDivider, UnorderedList, ListItem, Progress } from "@chakra-ui/react";
+import React, { useState, useEffect } from 'react';
+import { Container, Heading, Stack, VStack, Box, Text, UnorderedList, ListItem, Link } from "@chakra-ui/react";
 import SkillProgress from "../components/SkillProgress";
 import EducationCard from "../components/EducationCard";
 import ExperienceCard from "../components/ExperienceCard";
+import { NavLink } from 'react-router-dom';
 
 
 export default function Resume() {
+  const apiToken = process.env.REACT_APP_GITHUB_API_TOKEN;
+  const username = process.env.REACT_APP_GITHUB_USER_NAME;
+  const [repositories, setRepositories] = useState([]);
+
+  useEffect(() => {
+    const fetchRepositories = async () => {
+      try {
+        const response = await fetch(`https://api.github.com/users/${username}/repos`, {
+          headers: {
+            Authorization: `token ${apiToken}`
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch repositories');
+        }
+        const data = await response.json();
+        const starredRepos = data.filter(repo => repo.stargazers_count > 0);
+        setRepositories(starredRepos); // Update state with fetched starred repositories
+      } catch (error) {
+        console.error('Error fetching repositories:', error);
+      }
+    };
+    fetchRepositories();
+  }, [apiToken, username]);
   return (
     <Box bg='primary.200' p='10'>
       <Container bgColor='white' maxW={'7xl'} py={'10'} px={{ base: '10', md: '20' }} boxShadow='xl'>
@@ -64,8 +91,14 @@ export default function Resume() {
               </Box>
               {/*  Publications */}
               <Box>
-                <Heading fontSize={{ base: 'xl', md: '3xl' }} fontWeight='200' borderBottom='2px' borderColor='primary.400'>PUBLICATIONS</Heading>
-                <Text> Will be added later... </Text>
+                <Heading fontSize={{ base: 'xl', md: '3xl' }} fontWeight='200' borderBottom='2px' borderColor='primary.400'>PUBLICATIONS(SIDE PROJECTS</Heading>
+                <UnorderedList mt={3}>
+                  {repositories.map(repo => (
+                    <Link as={NavLink} to={`/Portfolio/project/${repo.name}`}>
+                      <ListItem key={repo.id} mb={3}>{repo.name}</ListItem>
+                    </Link>
+                  ))}
+                </UnorderedList>
               </Box>
             </Stack>
           </VStack>

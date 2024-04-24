@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Tabs, TabList, TabPanels, Tab, TabPanel, Flex, Box, Heading, Highlight, Select } from "@chakra-ui/react";
 import PhotoGallery from "../components/PhotoGallery";
+import ProjectList from "../components/ProjectList";
 
-export default function About() {
+export default function Portfolio() {
   const [albums, setAlbums] = useState([]);
   const [filteredAlbums, setFilteredAlbums] = useState([]);
   const [selectedOption, setSelectedOption] = useState('All');
@@ -17,7 +18,6 @@ export default function About() {
         console.error('Error fetching photo albums:', error);
       }
     };
-
     fetchAlbums();
   }, []);
 
@@ -41,14 +41,11 @@ export default function About() {
       const apiKey = process.env.REACT_APP_FLICKR_API_KEY;
       const userId = process.env.REACT_APP_FLICKR_USER_ID;
       const albumListUrl = `https://www.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=${apiKey}&user_id=${userId}&format=json&nojsoncallback=1`;
-
       const response = await fetch(albumListUrl);
       const data = await response.json();
-
       if (!data || !data.photosets || !data.photosets.photoset) {
         throw new Error('Invalid response format');
       }
-
       const albums = data.photosets.photoset;
       const albumDetails = await Promise.all(albums.map(async (album) => {
         const albumInfoUrl = `https://www.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=${apiKey}&photoset_id=${album.id}&user_id=${userId}&format=json&nojsoncallback=1`;
@@ -71,6 +68,7 @@ export default function About() {
       return null;
     }
   }
+
   return (
     <Box bg='primary.200'>
       <Container maxW={'7xl'} py={10}>
@@ -87,14 +85,7 @@ export default function About() {
           </TabList>
           <TabPanels>
             <TabPanel>
-              <Flex justify='flex-end'>
-                <Select placeholder='Select option' w='25%' mb={3}>
-                  <option value='option1'>All</option>
-                  <option value='option2'>Option 2</option>
-                  <option value='option3'>Option 3</option>
-                </Select>
-              </Flex>
-              <p>GitHub Projects</p>
+              <ProjectList />
             </TabPanel>
             <TabPanel>
               <Flex justify='flex-end'>
@@ -104,7 +95,6 @@ export default function About() {
                   <option value='Landscape'>Landscape</option>
                   <option value='People'>People</option>
                   <option value='Animal'>Animal</option>
-                  {/* Add other options as needed */}
                 </Select>
               </Flex>
               <PhotoGallery albums={filteredAlbums} />
@@ -115,5 +105,3 @@ export default function About() {
     </Box >
   );
 }
-
-
