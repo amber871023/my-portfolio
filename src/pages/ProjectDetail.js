@@ -131,20 +131,33 @@ export default function PortfolioProject() {
           </HStack>
           <TabPanels>
             <TabPanel>
+              <Heading as="h1" textAlign={'center'} size="lg" mb={5}>{project.name}</Heading>
               <Stack direction={{ base: 'column', md: 'column', lg: 'row' }} mb={5}>
                 {/* Project details info and repo's code and demo link */}
                 <VStack align={'flex-start'}>
-                  <Heading as="h1" size="lg" mb={4}>{project.name}</Heading>
                   <Box mb={5}>
                     <Image src={require(`../assets/projectImg/${project.name}.png`)} alt={`${project.name}`} borderRadius='lg'
                       boxShadow={'xl'} boxSize={'lg'}
                       w={'100%'} objectFit={'cover'}
                     />
                   </Box>
-                  <Box pr={10}>
-                    <Text fontSize="md" mb={2}>Description: <br /> {project.description}</Text>
-                    <Text fontSize="md" mb={2}>Last Updated: {new Date(project.updated_at).toLocaleDateString()} </Text>
-                    <Text fontSize="md">Total Commits: {commitData.length}</Text>
+                  <Box>
+                    <Text fontSize="md" fontWeight="bold" mb={2}>
+                      Description: <br />
+                      <Text as="span" fontWeight="100">{project.description}</Text>
+                    </Text>
+                    <Text fontSize="md" fontWeight="bold" mb={2}>
+                      Last Updated: {' '}
+                      <Text as="span" fontWeight="100">
+                        {new Date(project.updated_at).toLocaleDateString()}
+                      </Text>
+                    </Text>
+                    <Text fontSize="md" fontWeight="bold">
+                      Total Commits: {' '}
+                      <Text as="span" fontWeight="100">
+                        {commitData.length}
+                      </Text>
+                    </Text>
                     <HStack mt={3}>
                       <NavLink to={project.html_url} target="_blank" rel="noopener noreferrer">
                         <Button leftIcon={<FaGithub />} mr={1}> GitHub</Button>
