@@ -4,7 +4,7 @@ import { AgChartsReact } from 'ag-charts-react';
 
 const PieChart = ({ pieChartData }) => {
   return (
-    <Box w={'450px'}>
+    <Box w={'450px'} h={'500px'}>
       <AgChartsReact
         options={{
           series: [{
