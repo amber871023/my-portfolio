@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, HStack, Stack, VStack, Tabs, TabList, TabPanels, Tab, TabPanel, Box, Heading, Highlight, Button, Text, Image } from "@chakra-ui/react";
+import { Container, HStack, Stack, VStack, Tabs, TabList, TabPanels, Tab, TabPanel, Box, Heading, Highlight, Button, Text, Image, Spinner } from "@chakra-ui/react";
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { ArrowBackIcon } from '@chakra-ui/icons'
 import { FaGithub, FaRegWindowMaximize } from 'react-icons/fa';
@@ -16,6 +16,8 @@ export default function PortfolioProject() {
   const [project, setProject] = useState(null);
   const [commitData, setCommitData] = useState([]);
   const [languages, setLanguages] = useState({});
+  const [isLoading, setIsLoading] = useState(true); // add Spinner for awaiting result
+
 
   //Take users back to the previous page
   const handleReturn = () => {
@@ -39,6 +41,8 @@ export default function PortfolioProject() {
         // Fetch languages for repository
         const languages = await fetchLanguages();
         setLanguages(languages);
+        setIsLoading(false); // Set loading state to false after fetching repos
+
       } catch (error) {
         console.error('Error fetching project details:', error);
       }
@@ -82,8 +86,15 @@ export default function PortfolioProject() {
     fetchCommitData();
   }, [projectName, username]);
 
-  if (!project) {
-    return <Stack h={'md'} align={'center'} justify={'center'}><Heading fontSize={'2xl'} textAlign={'center'}>Loading...</Heading></Stack >; // Add a loading indicator 
+
+  // Display loading text while fetching data
+  if (isLoading) {
+    return (
+      <Stack h={'md'} align={'center'} justify={'center'}>
+        <Spinner size='xl' />
+        <Heading fontSize={'2xl'} textAlign={'center'}>Loading...</Heading>
+      </Stack>
+    );
   }
 
   // Prepare data for the Pie Chart

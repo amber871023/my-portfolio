@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Flex, Checkbox, Grid, GridItem, Text, Image, Box, Heading, Stack, Link } from '@chakra-ui/react';
+import { Flex, Checkbox, Grid, GridItem, Text, Image, Box, Heading, Stack, Link, Spinner } from '@chakra-ui/react';
 import { NavLink } from 'react-router-dom';
 
 const ProjectList = () => {
+  const apiToken = process.env.REACT_APP_GITHUB_API_TOKEN;
+  const username = process.env.REACT_APP_GITHUB_USER_NAME;
+
   const [repositories, setRepositories] = useState([]);
   const [languages, setLanguages] = useState({});
   const [selectedLanguages, setSelectedLanguages] = useState([]);
   const [filteredRepositories, setFilteredRepositories] = useState([]);
-
-  const apiToken = process.env.REACT_APP_GITHUB_API_TOKEN;
-  const username = process.env.REACT_APP_GITHUB_USER_NAME;
+  const [isLoading, setIsLoading] = useState(true); // add Spinner for awaiting result
 
   useEffect(() => {
     const fetchRepositories = async () => {
@@ -26,6 +27,7 @@ const ProjectList = () => {
         const data = await response.json();
         const starredRepos = data.filter(repo => repo.stargazers_count > 0);
         setRepositories(starredRepos); // Update state with fetched starred repositories
+        setIsLoading(false); // Set loading state to false after fetching repos
 
         // Fetch languages for each starred repository
         const languagesMap = {};
@@ -80,21 +82,23 @@ const ProjectList = () => {
     });
     setFilteredRepositories(filteredRepos);
   }, [selectedLanguages, repositories, languages]);
+
+  // Display loading text while fetching data
+  if (isLoading) {
+    return (
+      <Stack h={'md'} align={'center'} justify={'center'}>
+        <Spinner size='xl' />
+        <Heading fontSize={'2xl'} textAlign={'center'}>Loading...</Heading>
+      </Stack>
+    );
+  }
   // Display it if there's no repos match the selected languages
   if (filteredRepositories.length === 0) {
-    return <><Flex justify='flex-end' mb={'6'}>
-      <Stack spacing={2} direction="row">
-        {Object.values(languages).flatMap(lang => lang).filter((lang, index, self) => self.indexOf(lang) === index).map((lang, index) => (
-          <Checkbox
-            key={index} value={lang}
-            isChecked={selectedLanguages.includes(lang)}
-            onChange={() => handleCheckboxChange(lang)}
-          >
-            {lang}
-          </Checkbox>
-        ))}
+    return (
+      <Stack h={'md'} align={'center'} justify={'center'}>
+        <Heading fontSize={'2xl'} textAlign={'center'}>Sorry,<br />No repositories match the selected languages.</Heading>
       </Stack>
-    </Flex><Stack h={'md'} align={'center'} justify={'center'}><Heading fontSize={'2xl'} textAlign={'center'}>Sorry,<br />No repositories match the selected languages.</Heading></Stack></>;
+    );
   }
 
   return (
@@ -118,7 +122,7 @@ const ProjectList = () => {
       {/* render filter repos */}
       <Grid templateColumns="repeat(auto-fit, minmax(300px, 1fr))" gap={4} align={'center'}>
         {filteredRepositories.map(repo => (
-          <Link as={NavLink} to={`/Portfolio/project/${repo.name}`}>
+          <Link as={NavLink} to={`/Portfolio/project/${repo.name}`} _hover={{ textDecoration: 'none' }}>
             <GridItem key={repo.id} position="relative" borderRadius="lg" _hover={{ opacity: 0.7 }}>
               <Box maxW={'sm'} h={'100%'} bg='white' boxShadow={'2xl'} rounded={'md'} p={6} overflow={'hidden'}>
                 <Box bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'} height={'300px'}>
