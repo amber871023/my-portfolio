@@ -3,6 +3,12 @@ import { Grid, GridItem, Text, Image, Link, Box, Heading, Stack } from '@chakra-
 import { NavLink } from 'react-router-dom';
 
 const PhotoGallery = ({ albums }) => {
+  // Check if albums is null or empty
+  if (!albums || albums.length === 0) {
+    return (
+      <Stack h={'md'} align={'center'} justify={'center'}><Heading fontSize={'2xl'} textAlign={'center'}>Sorry,<br />No album match the selected categories.</Heading></Stack>
+    );
+  }
   return (
     <Grid templateColumns="repeat(auto-fit, minmax(300px, 1fr))" gap={4} align='center'>
       {albums.map((album, index) => (
