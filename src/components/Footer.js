@@ -57,7 +57,7 @@ export default function Footer() {
                 <span>n11422807@qut.edu.au</span>
               </Link>
             </HStack>
-            <Link href='www.linkedin.com/in/amber-cheng-202396227' isExternal>
+            <Link href='https://linkedin.com/in/amber-cheng-202396227/' isExternal>
               <IconButton icon={<FaLinkedin />} aria-label="LinkedIn" colorScheme='primary.500' fontSize='30px' />
             </Link>
             <Link href="https://github.com/amber871023" isExternal>
