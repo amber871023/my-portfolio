@@ -55,7 +55,11 @@ If you prefer to install dependencies individually, here's a list along with the
   ```
 
 ## Website Architecture
-Providing a dynamic and responsive user interface. It utilizes multiple components to manage different parts of the website and fetches data from external APIs such as GitHub and Flickr, making asynchronous requests to retrieve information such as user repositories, images, etc. The UI components are styled using Chakra UI for a consistent and visually appealing design. 
+This website is designed to provide a dynamic and responsive user interface. It utilizes multiple components to manage different parts of the website and fetches data from external APIs such as GitHub and Flickr, making asynchronous requests to retrieve information such as user repositories, images, etc. The UI components are styled using Chakra UI for a consistent and visually appealing design. 
+### Technologies Used
+- Frontend Framework: ReactJS
+- Styling Library: Chakra UI
+- Data Fetching: REST API
 
 ## Issue Reporting
 If you encounter any issues with my project, please feel free to report them on the [GitHub Issues](https://github.com/amber871023/my-portfolio/issues) page. 
