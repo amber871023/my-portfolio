@@ -49,7 +49,7 @@ If you prefer to install dependencies individually, here's a list along with the
   ```sh
   npm install @emotion/react
   ```
-- ag-Grid: For displaying commit data in a table format.
+- ag-Grid: For displaying commit data in a table format and pie chart.
   ```sh
   npm install ag-grid-react ag-grid-community
   ```
