@@ -90,7 +90,7 @@ export default function Resume() {
               </Box>
               {/*  Publications */}
               <Box>
-                <Heading fontSize={{ base: 'xl', md: '3xl' }} fontWeight='200' borderBottom='2px' borderColor='primary.400'>PUBLICATIONS(SIDE PROJECTS</Heading>
+                <Heading fontSize={{ base: 'xl', md: '3xl' }} fontWeight='200' borderBottom='2px' borderColor='primary.400'>PUBLICATIONS</Heading>
                 <UnorderedList mt={3}>
                   {repositories.map(repo => (
                     <Link as={NavLink} to={`/Portfolio/project/${repo.name}`}>
