@@ -1,4 +1,4 @@
-import { Box, HStack, VStack, Text, Progress } from "@chakra-ui/react";
+import { Box, Heading, HStack, VStack, Text, Progress } from "@chakra-ui/react";
 
 const skills = [
   { name: "HTML", value: 100 },
