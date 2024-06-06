@@ -5,6 +5,7 @@ import { ArrowBackIcon } from '@chakra-ui/icons'
 import { FaGithub, FaRegWindowMaximize } from 'react-icons/fa';
 import PieChart from '../components/PieChart';
 import CommitTable from '../components/CommitTable';
+import defaultImage from '../assets/projectImg/default.png';
 
 export default function PortfolioProject() {
   const username = process.env.REACT_APP_GITHUB_USER_NAME;
@@ -136,7 +137,7 @@ export default function PortfolioProject() {
                 {/* Project details info and repo's code and demo link */}
                 <VStack align={'flex-start'}>
                   <Box mb={5}>
-                    <Image src={require(`../assets/projectImg/${project.name}.png`)} alt={`${project.name}`} borderRadius='lg'
+                    <Image src={`../assets/projectImg/${project.name}.png`} onError={(e) => e.target.src = defaultImage} alt={`${project.name}`} borderRadius='lg'
                       boxShadow={'xl'} boxSize={'lg'}
                       w={'100%'} objectFit={'cover'}
                     />
