@@ -137,10 +137,7 @@ export default function PortfolioProject() {
                 {/* Project details info and repo's code and demo link */}
                 <VStack align={'flex-start'}>
                   <Box mb={5}>
-                    <Image src={require(`../assets/projectImg/${project.name}.png`)} onError={(e) => e.target.src = defaultImage} alt={`${project.name}`} borderRadius='lg'
-                      boxShadow={'xl'} boxSize={'lg'}
-                      w={'100%'} objectFit={'cover'}
-                    />
+                    <DynamicImage repoName={project.name} />
                   </Box>
                   <Box>
                     <Text fontSize="md" fontWeight="bold" mb={2}>
@@ -183,3 +180,29 @@ export default function PortfolioProject() {
     </Box >
   );
 }
+// DynamicImage component that loads images dynamically
+const DynamicImage = ({ repoName }) => {
+  const [imageSrc, setImageSrc] = useState(null);
+
+  useEffect(() => {
+    const loadImage = async () => {
+      try {
+        // Check if the image exists
+        const imageModule = await import(`../assets/projectImg/${repoName}.png`);
+
+        // If the import is successful, set the image source
+        setImageSrc(imageModule.default);
+      } catch (error) {
+        console.error(`Failed to load image for ${repoName}:`, error);
+
+        // If the image does not exist, use the default image
+        setImageSrc(defaultImage);
+      }
+    };
+
+    loadImage();
+  }, [repoName]);
+
+  return <Image src={imageSrc} alt={repoName} borderRadius='lg' boxShadow={'xl'} boxSize={'lg'}
+    w={'100%'} objectFit={'cover'} />;
+};
