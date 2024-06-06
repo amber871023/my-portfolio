@@ -137,7 +137,7 @@ export default function PortfolioProject() {
                 {/* Project details info and repo's code and demo link */}
                 <VStack align={'flex-start'}>
                   <Box mb={5}>
-                    <Image src={`../assets/projectImg/${project.name}.png`} onError={(e) => e.target.src = defaultImage} alt={`${project.name}`} borderRadius='lg'
+                    <Image src={require(`../assets/projectImg/${project.name}.png`)} onError={(e) => e.target.src = defaultImage} alt={`${project.name}`} borderRadius='lg'
                       boxShadow={'xl'} boxSize={'lg'}
                       w={'100%'} objectFit={'cover'}
                     />
