@@ -136,10 +136,8 @@ export default function PortfolioProject() {
               <Stack direction={{ base: 'column', md: 'column', lg: 'row' }} mb={5}>
                 {/* Project details info and repo's code and demo link */}
                 <VStack align={'flex-start'}>
-                  <Box mb={5}>
-                    <DynamicImage repoName={project.name} />
-                  </Box>
-                  <Box>
+                  <DynamicImage repoName={project.name} />
+                  <Box mt={5}>
                     <Text fontSize="md" fontWeight="bold" mb={2}>
                       Description: <br />
                       <Text as="span" fontWeight="100">{project.description}</Text>
