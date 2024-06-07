@@ -186,7 +186,7 @@ const DynamicImage = ({ repoName }) => {
     const loadImage = async () => {
       try {
         // Check if the image exists
-        const imageModule = await import(`../assets/projectImg/${repoName}.png`);
+        const imageModule = await import(`../../public/projectImg/${repoName}.png`);
 
         // If the import is successful, set the image source
         setImageSrc(imageModule.default);
