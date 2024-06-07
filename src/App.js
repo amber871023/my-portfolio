@@ -13,7 +13,7 @@ function App() {
   return (
     <Router>
       <Header />
-      <main style={{ minHeight: "calc(100vh - 210px)" }}>
+      <main style={{ minHeight: "calc(100vh - 190px)" }}>
         {/* Adjust 210px according to  header and footer height */}
         <Routes>
           {/* Use Routes component for defining routes */}

@@ -37,7 +37,7 @@ export default function Home() {
           rounded="2xl"
           spacing={{ base: 4, md: 5 }}
           textAlign={{ base: "center", md: "left" }}
-          position={"relative"} w={"full"}>
+          position={"relative"} w={"full"} >
           <Blob
             w={{ base: "150%", md: "160%" }} h={"200%"}
             position={"absolute"}
@@ -72,11 +72,13 @@ export default function Home() {
             </Button>
           </Box>
         </Stack>
-        <Flex flex={1} position={"relative"} w={"full"}>
+        <Stack flex={1} position={"relative"} w={"full"}>
           <Blob
-            w={"200%"} h={"150%"}
+            w={{ base: "60%", md: "100%", lg: "90%" }}
+            h={{ base: "100%", md: "100%" }}
             position={"absolute"}
-            top={"-10%"} left={{ base: "-10%", md: "10%" }}
+            bottom={"-50%"}
+            left={{ base: "45%", md: "20%", lg: "20%" }}
             zIndex={-1}
             color={"primary.200"}
           />
@@ -91,7 +93,7 @@ export default function Home() {
               fit={"cover"} align={"center"}
               w={"100%"} h={"100%"} />
           </Box>
-        </Flex>
+        </Stack>
       </Stack>
     </Container>
   );
@@ -110,3 +112,5 @@ const Blob = (props) => {
     </Icon>
   );
 };
+
+

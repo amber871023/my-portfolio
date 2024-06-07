@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <Box bg={'primary.500'} color={'white'}>
       <Container
-        maxW={'6xl'} py={4} spacing={4} justify={'center'}
+        maxW={'6xl'} py={5} spacing={4} justify={'center'}
         align={'space-between'}>
         <Stack direction={{ base: 'column', md: 'row' }}>
           {/* MenuItems */}

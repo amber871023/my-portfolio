@@ -2,7 +2,7 @@ import { Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPane
 import quoteImg from "../assets/quoteImg.jpeg";
 const AboutInfoAccordion = () => {
   return (
-    <Accordion allowToggle align={'center'} w={{ base: '530px', md: '2xl', lg: '4xl' }}>
+    <Accordion allowToggle align={'center'} w={{ base: '100%', md: '2xl', lg: '4xl' }}>
       <AccordionItem>
         <AccordionButton>
           <Box as='h2' flex='1' textAlign='left' fontWeight="bold">

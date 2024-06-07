@@ -52,7 +52,7 @@ export default function About() {
       </Container>
       <WaveDivider />
     </Box>
-      <Box bg={'white'} align={'center'} my={'50px'}>
+      <Box bg={'white'} align={'center'} my={'50px'} >
         <AboutInfoAccordion />
       </Box ></>
   );

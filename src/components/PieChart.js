@@ -2,9 +2,9 @@ import React from 'react';
 import { Box } from '@chakra-ui/react';
 import { AgChartsReact } from 'ag-charts-react';
 
-const PieChart = ({ pieChartData }) => {
+const PieChart = ({ pieChartData, width }) => {
   return (
-    <Box w={'450px'} h={'500px'}>
+    <Box style={{ width: width }} h={'500px'}>
       <AgChartsReact
         options={{
           series: [{

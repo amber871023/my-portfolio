@@ -164,11 +164,12 @@ export default function PortfolioProject() {
                     </HStack>
                   </Box>
                 </VStack>
-                <VStack w='600px' align={' center'} pb={5}>
+                <VStack w={{ base: '100%', md: '600px' }} align={' center'} pb={5}>
                   {/* Render pie chart for languages */}
-                  <PieChart pieChartData={pieChartData} />
+                  <PieChart pieChartData={pieChartData} width="100%" // Set the width to 100% to ensure it fits within its container
+                  />
                   {/* Project commits details info Table */}
-                  <CommitTable commitData={commitData} columnDefs={columnDefs} />
+                  <CommitTable commitData={commitData} columnDefs={columnDefs} width="100%" />
                 </VStack>
               </Stack>
             </TabPanel>
