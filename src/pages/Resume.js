@@ -53,7 +53,7 @@ export default function Resume() {
                   title='Master of IT - Queensland University of Technology'
                   period='2023-2024'
                   location='Brisbane, Queensland, Australia'
-                  gpa='Current GPA: 5.875/7.00'
+                  gpa='Current GPA: 6.313/7.00'
                 />
                 <EducationCard
                   title='Bachelor of MIS - National Yunlin University of Science and Technology'
