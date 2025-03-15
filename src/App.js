@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Resume from "./pages/Resume";
 import Portfolio from "./pages/Portfolio";
 import PortfolioPhotography from "./pages/PortfolioPhotography";
 import ProjectDetail from "./pages/ProjectDetail";
@@ -19,7 +18,7 @@ function App() {
           {/* Use Routes component for defining routes */}
           <Route path="/" exact element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/resume" element={<Resume />} />
+          {/* <Route path="/resume" element={<Resume />} /> */}
           <Route path="/portfolio" element={<Portfolio />} />
           {/* Add a dynamic route for portfolio items */}
           <Route path="/Portfolio/albums/:id" element={<PortfolioPhotography />} />

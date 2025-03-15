@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Heading, Stack, VStack, Box, Text, UnorderedList, ListItem, Link } from "@chakra-ui/react";
+import { Container, Heading, Stack, VStack, Box, Text } from "@chakra-ui/react";
 import SkillProgress from "../components/SkillProgress";
 import EducationCard from "../components/EducationCard";
 import ExperienceCard from "../components/ExperienceCard";
-import { NavLink } from 'react-router-dom';
 
 export default function Resume() {
   const apiToken = process.env.REACT_APP_GITHUB_API_TOKEN;
@@ -89,7 +88,7 @@ export default function Resume() {
                 <SkillProgress />
               </Box>
               {/*  Publications */}
-              <Box>
+              {/* <Box>
                 <Heading fontSize={{ base: 'xl', md: '3xl' }} fontWeight='200' borderBottom='2px' borderColor='primary.400'>PUBLICATIONS</Heading>
                 <UnorderedList mt={3}>
                   {repositories.map(repo => (
@@ -98,7 +97,7 @@ export default function Resume() {
                     </Link>
                   ))}
                 </UnorderedList>
-              </Box>
+              </Box> */}
             </Stack>
           </VStack>
         </Stack>

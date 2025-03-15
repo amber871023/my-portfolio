@@ -1,7 +1,7 @@
 import { Box, Container, Stack, Image, Button, Text, HStack, VStack, Spacer, Heading, IconButton, Link } from '@chakra-ui/react'
 import logo from '../assets/logo_white.png';
 import { Link as RouterLink } from 'react-router-dom';
-import { FaEnvelope, FaLinkedin, FaGithub, FaInstagram, FaFacebookSquare } from 'react-icons/fa';
+import { FaEnvelope, FaLinkedin, FaGithub, FaFacebookSquare } from 'react-icons/fa';
 
 const MenuItems = ['About', 'Resume', 'Portfolio'];
 export default function Footer() {
@@ -36,9 +36,9 @@ export default function Footer() {
             <Link href="https://www.facebook.com/amberCYT" isExternal>
               <IconButton icon={<FaFacebookSquare />} aria-label="Facebook" colorScheme='primary.500' fontSize='30px' />
             </Link>
-            <Link href="https://www.instagram.com/amber_cyttt/" isExternal>
+            {/* <Link href="https://www.instagram.com/amber_cyttt/" isExternal>
               <IconButton icon={<FaInstagram />} aria-label="Instagram" colorScheme='primary.500' fontSize='30px' />
-            </Link>
+            </Link> */}
           </Box>
           {/* logo and copyright */}
           <VStack>
@@ -52,9 +52,9 @@ export default function Footer() {
           <Box display={{ base: 'none', md: 'block' }} align={'left'} mt={2}>
             <Heading size={'sm'} textAlign={{ base: 'center', md: 'start' }} mb={1}>Contact</Heading>
             <HStack >
-              <Link href='mailto:n11422807@qut.edu.au' isExternal>
+              <Link href='mailto:amber871023@gmail.com' isExternal>
                 <IconButton px={0} icon={<FaEnvelope />} colorScheme='primary.500' aria-label="Email" fontSize='26px' />
-                <span>n11422807@qut.edu.au</span>
+                <span>amber871023@gmail.com</span>
               </Link>
             </HStack>
             <Link href='https://linkedin.com/in/amber-cheng-202396227/' isExternal>
@@ -66,9 +66,9 @@ export default function Footer() {
             <Link href="https://www.facebook.com/amberCYT" isExternal>
               <IconButton icon={<FaFacebookSquare />} aria-label="Facebook" colorScheme='primary.500' fontSize='30px' />
             </Link>
-            <Link href="https://www.instagram.com/amber_cyttt/" isExternal>
+            {/* <Link href="https://www.instagram.com/amber_cyttt/" isExternal>
               <IconButton icon={<FaInstagram />} aria-label="Instagram" colorScheme='primary.500' fontSize='30px' />
-            </Link>
+            </Link> */}
           </Box>
         </Stack>
       </Container>

@@ -11,7 +11,7 @@ const AboutInfoAccordion = () => {
           <AccordionIcon />
         </AccordionButton>
         <AccordionPanel pb={4} textAlign='left'>
-          Taiwan,a beautiful island situated in East Asia.
+          Taiwan, a beautiful island situated in East Asia.
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem>

@@ -4,7 +4,8 @@ import { Container, Flex, Box, Button, Image, Spacer, Stack } from '@chakra-ui/r
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import logo from '../assets/logo.png';
 
-const MenuItems = ['About', 'Resume', 'Portfolio'];
+// const MenuItems = ['About', 'Resume', 'Portfolio'];
+const MenuItems = ['About', 'Portfolio'];
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);

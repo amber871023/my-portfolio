@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Flex, Checkbox, Grid, GridItem, Text, Image, Box, Heading, Stack, Link, Spinner } from '@chakra-ui/react';
+import { Grid, GridItem, Text, Image, Box, Heading, Stack, Link, Spinner } from '@chakra-ui/react';
 import { NavLink } from 'react-router-dom';
 import defaultImage from '../assets/projectImg/default.png';
 
@@ -8,9 +8,10 @@ const ProjectList = () => {
   const username = process.env.REACT_APP_GITHUB_USER_NAME;
 
   const [repositories, setRepositories] = useState([]);
-  const [languages, setLanguages] = useState({});
-  const [selectedLanguages, setSelectedLanguages] = useState([]);
-  const [filteredRepositories, setFilteredRepositories] = useState([]);
+  // const [languages, setLanguages] = useState({});
+  // const [selectedLanguages, setSelectedLanguages] = useState([]);
+  const [topics, setTopics] = useState({});
+  // const [filteredRepositories, setFilteredRepositories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -27,15 +28,22 @@ const ProjectList = () => {
         }
         const data = await response.json();
         const starredRepos = data.filter(repo => repo.stargazers_count > 0);
-        setRepositories(starredRepos);
-        setIsLoading(false);
+        // Sort repositories by update time (latest first)
+        const sortedRepos = starredRepos.sort((a, b) => {
+          const dateA = new Date(a.created_at);
+          const dateB = new Date(b.created_at);
+          console.log(dateA, dateB)
+          return dateB - dateA; // Descending order
+        });
 
-        const languagesMap = {};
+        setRepositories(sortedRepos);
+        setIsLoading(false);
+        console.log(data)
+        const topicsMap = {}
         await Promise.all(starredRepos.map(async repo => {
-          const languages = await fetchLanguages(repo);
-          languagesMap[repo.id] = languages;
+          topicsMap[repo.id] = await fetchTopics(repo);
         }));
-        setLanguages(languagesMap);
+        setTopics(topicsMap);
       } catch (error) {
         console.error('Error fetching repositories:', error);
       }
@@ -43,39 +51,37 @@ const ProjectList = () => {
     fetchRepositories();
   }, [apiToken, username]);
 
-  const fetchLanguages = async (repo) => {
+  const fetchTopics = async (repo) => {
     try {
-      const response = await fetch(`https://api.github.com/repos/${username}/${repo.name}/languages`, {
+      const response = await fetch(`https://api.github.com/repos/${username}/${repo.name}/topics`, {
         headers: {
           Authorization: `token ${apiToken}`
         }
       });
-      if (!response.ok) {
-        throw new Error('Failed to fetch languages');
-      }
+      if (!response.ok) throw new Error(`Failed to fetch topics for ${repo.name}`);
       const data = await response.json();
-      return Object.keys(data);
+      return data.names || []; // Topics are stored in `names` array
     } catch (error) {
-      console.error(`Error fetching languages for repository ${repo.name}:`, error);
+      console.error(`Error fetching topics for repository ${repo.name}:`, error);
       return [];
     }
   };
 
-  const handleCheckboxChange = (language) => {
-    const languageIndex = selectedLanguages.indexOf(language);
-    if (languageIndex !== -1) {
-      setSelectedLanguages(selectedLanguages.filter((_, index) => index !== languageIndex));
-    } else {
-      setSelectedLanguages([...selectedLanguages, language]);
-    }
-  };
+  // const handleCheckboxChange = (language) => {
+  //   const languageIndex = selectedLanguages.indexOf(language);
+  //   if (languageIndex !== -1) {
+  //     setSelectedLanguages(selectedLanguages.filter((_, index) => index !== languageIndex));
+  //   } else {
+  //     setSelectedLanguages([...selectedLanguages, language]);
+  //   }
+  // };
 
-  useEffect(() => {
-    const filteredRepos = repositories.filter(repo => {
-      return selectedLanguages.length === 0 || selectedLanguages.every(lang => languages[repo.id]?.includes(lang));
-    });
-    setFilteredRepositories(filteredRepos);
-  }, [selectedLanguages, repositories, languages]);
+  // useEffect(() => {
+  //   const filteredRepos = repositories.filter(repo => {
+  //     return selectedLanguages.length === 0 || selectedLanguages.every(lang => languages[repo.id]?.includes(lang));
+  //   });
+  //   setFilteredRepositories(filteredRepos);
+  // }, [selectedLanguages, repositories, languages]);
 
 
   if (isLoading) {
@@ -87,10 +93,10 @@ const ProjectList = () => {
     );
   }
 
-  if (filteredRepositories.length === 0) {
+  if (repositories.length === 0) {
     return (
       <>
-        <Flex justify='flex-end' mb={'6'} wrap='wrap'>
+        {/* <Flex justify='flex-end' mb={'6'} wrap='wrap'>
           {Object.values(languages)
             .flatMap(lang => lang)
             .filter((lang, index, self) => self.indexOf(lang) === index)
@@ -104,7 +110,7 @@ const ProjectList = () => {
                 {lang}
               </Checkbox>
             ))}
-        </Flex>
+        </Flex> */}
         <Stack h={'md'} align={'center'} justify={'center'}>
           <Heading fontSize={'2xl'} textAlign={'center'}>Sorry,<br />No repositories match the selected languages.</Heading>
         </Stack>
@@ -114,7 +120,7 @@ const ProjectList = () => {
 
   return (
     <>
-      <Flex justify='flex-end' mb={'6'} wrap='wrap'>
+      {/* <Flex justify='flex-end' mb={'6'} wrap='wrap'>
         {Object.values(languages)
           .flatMap(lang => lang)
           .filter((lang, index, self) => self.indexOf(lang) === index)
@@ -128,28 +134,28 @@ const ProjectList = () => {
               {lang}
             </Checkbox>
           ))}
-      </Flex>
-      <Grid templateColumns="repeat(auto-fit, minmax(300px, 1fr))" gap={4} align={'center'}>
-        {filteredRepositories.map(repo => (
+      </Flex> */}
+      <Grid templateColumns="repeat(auto-fit, minmax(300px, 1fr))" gap={5} align={'center'}>
+        {repositories.map(repo => (
           <Link key={repo.id} as={NavLink} to={`/Portfolio/project/${repo.name}`} _hover={{ textDecoration: 'none' }}>
             <GridItem key={repo.id} position="relative" borderRadius="lg" _hover={{ opacity: 0.7 }}>
-              <Box maxW={'sm'} h={'100%'} bg='white' boxShadow={'2xl'} rounded={'md'} p={6} overflow={'hidden'}>
-                <Box bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'} height={'300px'}>
+              <Box maxW={'sm'} bg='white' boxShadow={'2xl'} rounded={'md'} overflow={'hidden'}>
+                <Box bg={'gray.100'} position={'relative'} height="250px">
                   <DynamicImage repoName={repo.name} />
                 </Box>
-                <Stack align={'flex-start'}>
-                  <Text color={'green.500'} textTransform={'uppercase'} fontWeight={800} fontSize={'sm'}>
-                    {languages[repo.id] && languages[repo.id].join(', ')}
-                  </Text>
-                  <Heading color='gray.700' fontSize={'2xl'} >
+                <Stack align={'flex-start'} p={6} >
+                  <Heading color='gray.700' fontSize={'xl'} >
                     {repo.name}
                   </Heading>
+                  <Text textAlign={'left'} color={'green.500'} textTransform={'uppercase'} fontWeight={600} fontSize={'xs'}>
+                    {topics[repo.id] && topics[repo.id].length > 0 ? topics[repo.id].join(', ') : 'No topics'}
+                  </Text>
                 </Stack>
               </Box>
             </GridItem>
           </Link>
         ))}
-      </Grid>
+      </Grid >
     </>
   );
 };
@@ -167,8 +173,6 @@ const DynamicImage = ({ repoName }) => {
         // If the import is successful, set the image source
         setImageSrc(imageModule.default);
       } catch (error) {
-        console.error(`Failed to load image for ${repoName}:`, error);
-
         // If the image does not exist, use the default image
         setImageSrc(defaultImage);
       }
