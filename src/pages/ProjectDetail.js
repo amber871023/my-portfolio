@@ -134,43 +134,39 @@ export default function PortfolioProject() {
             <TabPanel>
               <Heading as="h1" textAlign={'center'} size="lg" mb={5}>{project.name}</Heading>
               <Stack direction={{ base: 'column', md: 'column', lg: 'row' }} mb={5}>
+                <DynamicImage repoName={project.name} />
                 {/* Project details info and repo's code and demo link */}
-                <VStack align={'flex-start'}>
-                  <DynamicImage repoName={project.name} />
-                  <Box mt={5}>
-                    <Text fontSize="md" fontWeight="bold" mb={2}>
-                      Description: <br />
-                      <Text as="span" fontWeight="100">{project.description}</Text>
-                    </Text>
-                    <Text fontSize="md" fontWeight="bold" mb={2}>
-                      Last Updated: {' '}
-                      <Text as="span" fontWeight="100">
-                        {new Date(project.updated_at).toLocaleDateString()}
+                <HStack align={'flex-start'}>
+                  <VStack>
+                    <Box mt={5}>
+                      <Text fontSize="md" fontWeight="bold" mb={2}>
+                        Description: <br />
+                        <Text as="span" fontWeight="100">{project.description}</Text>
                       </Text>
-                    </Text>
-                    <Text fontSize="md" fontWeight="bold">
-                      Total Commits: {' '}
-                      <Text as="span" fontWeight="100">
-                        {commitData.length}
+                      <Text fontSize="md" fontWeight="bold" mb={2}>
+                        Last Updated: {' '}
+                        <Text as="span" fontWeight="100">
+                          {new Date(project.updated_at).toLocaleDateString()}
+                        </Text>
                       </Text>
-                    </Text>
-                    <HStack mt={3}>
-                      <NavLink to={project.html_url} target="_blank" rel="noopener noreferrer">
-                        <Button leftIcon={<FaGithub />} mr={1}> GitHub</Button>
-                      </NavLink>
-                      <NavLink to={`https://amber871023.github.io/${project.name}`} target="_blank" rel="noopener noreferrer">
-                        <Button leftIcon={<FaRegWindowMaximize />}> Demo</Button>
-                      </NavLink>
-                    </HStack>
-                  </Box>
-                </VStack>
-                <VStack w={{ base: '100%', md: '600px' }} align={' center'} pb={5}>
-                  {/* Render pie chart for languages */}
-                  <PieChart pieChartData={pieChartData} width="100%" // Set the width to 100% to ensure it fits within its container
-                  />
-                  {/* Project commits details info Table */}
-                  <CommitTable commitData={commitData} columnDefs={columnDefs} width="100%" />
-                </VStack>
+                      <Text fontSize="md" fontWeight="bold">
+                        Total Commits: {' '}
+                        <Text as="span" fontWeight="100">
+                          {commitData.length}
+                        </Text>
+                      </Text>
+                      <HStack mt={3}>
+                        <NavLink to={project.html_url} target="_blank" rel="noopener noreferrer">
+                          <Button leftIcon={<FaGithub />} mr={1}> GitHub</Button>
+                        </NavLink>
+                        <NavLink to={`https://amber871023.github.io/${project.name}`} target="_blank" rel="noopener noreferrer">
+                          <Button leftIcon={<FaRegWindowMaximize />}> Demo</Button>
+                        </NavLink>
+                      </HStack>
+                    </Box>
+                    <CommitTable commitData={commitData} columnDefs={columnDefs} width="100%%" />
+                  </VStack>
+                </HStack>
               </Stack>
             </TabPanel>
           </TabPanels>
