@@ -165,7 +165,7 @@ export default function Projects() {
                 bg={cardBgColor}
                 transition="transform 0.3s, box-shadow 0.3s"
                 _hover={{
-                  transform: 'translateY(-5px)',
+                  transform: 'translateY(-10px)',
                   boxShadow: 'xl'
                 }}
               >

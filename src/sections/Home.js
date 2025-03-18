@@ -34,6 +34,7 @@ export default function Home() {
           <Stack
             flex={1}
             bg={useColorModeValue("white", "gray.200")}
+            opacity={'90%'}
             py={{ base: "10", md: "100px" }}
             px={{ base: "10", md: "60px" }}
             rounded="2xl"
@@ -47,8 +48,7 @@ export default function Home() {
                 Hello, <WavingHandAnimation />
               </Text>
               <br />
-              <Text as="span" bgGradient={useColorModeValue("linear(to-r, brown, primary.600)", "linear(to-l, #4b6cb7, #182848)")}
-                bgClip="text">
+              <Text as="span" bgGradient={useColorModeValue("linear(to-r, brown, primary.600)", "linear(to-l, #4b6cb7, #182848)")} bgClip="text">
                 I'm Yi Ting
               </Text>
               <br />
