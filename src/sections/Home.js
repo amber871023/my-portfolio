@@ -61,7 +61,7 @@ export default function Home() {
               Building bridges between imagination and reality through software.
             </Text>
             <Box>
-              <Button as="a" href="/Resume.pdf" download="Resume.pdf" rounded="full" size="lg" colorScheme="primary" _hover={{ bgGradient: "linear(to-r, brown, primary.600)", color: "black" }}>
+              <Button as="a" href="/Resume.pdf" download="Resume.pdf" rounded="full" size="lg" colorScheme="orange" _hover={{ bgGradient: "linear(to-r, brown, primary.600)", color: "black" }}>
                 Resume
               </Button>
               <Button as={NavLink} to="/about" ml={4} rounded="full" size="lg" color={'black'}>

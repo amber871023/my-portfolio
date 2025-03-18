@@ -1,4 +1,4 @@
-import { Card, CardBody, CardHeader, Heading, Box, Text, Stack, StackDivider, UnorderedList, ListItem, Icon, HStack } from "@chakra-ui/react";
+import { Card, CardBody, CardHeader, Heading, Box, Text, Stack, StackDivider, UnorderedList, ListItem, HStack } from "@chakra-ui/react";
 import { FaCalendarDays, FaLocationDot } from "react-icons/fa6";
 
 
