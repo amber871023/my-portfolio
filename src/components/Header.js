@@ -1,66 +1,81 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Container, Flex, Box, Button, Image, Spacer, Stack } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import logo from '../assets/logo.png';
+import white_logo from '../assets/logo_white.png';
+import { Box, Flex, HStack, IconButton, Button, useDisclosure, useColorModeValue, useColorMode, Stack, Container, Image } from '@chakra-ui/react';
+import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
+import SpaceBackground from './SpaceBackground';
 
-// const MenuItems = ['About', 'Resume', 'Portfolio'];
-const MenuItems = ['About', 'Portfolio'];
+const Links = ['Home', 'About', 'Skills', 'Projects', 'Contact'];
 
-const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const closeMenu = () => {
-    setIsOpen(false);
-  };
-
+const NavLink = ({ children }) => {
   return (
-    <Box as={'nav'} bg='white' boxShadow='base' position='sticky' top='0' left='0' right='0' zIndex='100' width='100%' >
-      <Container maxW={'7xl'}>
-        <Flex p='2' position='relative'>
-          {/* Logo */}
-          <Box as={NavLink} to={'/'}>
-            <Image src={logo} alt='yi ting' w={{ base: '120px', md: '150px' }} h={{ base: '50px', md: '55px' }} />
-          </Box>
-          <Spacer />
-          {/* Menu */}
-          <Box display={{ base: 'none', md: 'flex' }}>
-            <Button
-              as={NavLink} to={`/`} style={({ isActive }) => ({ color: isActive ? "brown" : "black" })} variant='link' mr={5} textStyle={'h3'} onClick={closeMenu}>Home</Button>
-            {MenuItems.map((item) => (
-              <Button
-                as={NavLink} to={`/${item}`} key={item} style={({ isActive }) => ({ color: isActive ? "brown" : "black" })} variant='link' mr={5} textStyle={'h3'}>{item}</Button>
-            ))}
-          </Box>
-          {/* toggleMenu-hamburger */}
-          <Box display={{ base: 'flex', md: 'none' }}>
-            <Button onClick={toggleMenu} colorScheme='white' variant='link'>
-              {isOpen ? <CloseIcon /> : <HamburgerIcon />}
-            </Button>
-          </Box>
-          {isOpen && (
-            //display it in md size and hidden in base size
-            <Stack display={{ base: 'flex', md: 'none' }} position='fixed' top='63px' left='0' bg='primary.500' p='2' mt='1' zIndex='100' width='100%'>
-              <Flex direction='column'>
-                <Button
-                  as={NavLink} to={'/'} colorScheme='white' color={'white'} variant='link' mb='1' onClick={closeMenu}>Home</Button >
-                {
-                  MenuItems.map((item) => (
-                    <Button
-                      as={NavLink} to={`/${item}`} key={item} colorScheme='white' color={'white'} variant='link' mb='1' onClick={closeMenu}>{item}</Button>
-                  ))
-                }
-              </Flex>
-            </Stack>
-          )}
-        </Flex>
-      </Container>
+    <Box
+      as="a"
+      px={2}
+      py={1}
+      rounded="md"
+      _hover={{
+        textDecoration: 'none',
+        bg: useColorModeValue('primary.200', 'gray.700'),
+      }}
+      href={`#${children.toLowerCase()}`}
+    >
+      {children}
     </Box>
   );
 };
 
-export default Header;
+export default function Header() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { colorMode, toggleColorMode } = useColorMode();
+
+  return (
+    <Box
+      as="header"
+      position="fixed"
+      w="100%"
+      zIndex={10}
+      bg={useColorModeValue('white', 'gray.900')}
+      boxShadow="md"
+      transition="background-color 0.2s"
+    >
+      <SpaceBackground>
+        <Container maxW="container.xl">
+          <Flex h={16} alignItems="center" justifyContent="space-between">
+            <IconButton
+              size="md"
+              icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+              aria-label="Open Menu"
+              display={{ md: 'none' }}
+              onClick={isOpen ? onClose : onOpen}
+            />
+            <HStack spacing={1} alignItems="center">
+              <Box >
+                <Image src={useColorModeValue(logo, white_logo)} alt='yi ting' w={{ base: '120px', md: '150px' }} h={{ base: '50px', md: '55px' }} />
+              </Box>
+              <HStack as="nav" spacing={4} display={{ base: 'none', md: 'flex' }}>
+                {Links.map((link) => (
+                  <NavLink key={link}>{link}</NavLink>
+                ))}
+              </HStack>
+            </HStack>
+            <Flex alignItems="center">
+              <Button onClick={toggleColorMode} mr={4}>
+                {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+              </Button>
+            </Flex>
+          </Flex>
+
+          {isOpen ? (
+            <Box pb={4} display={{ md: 'none' }}>
+              <Stack as="nav" spacing={4} align={'center'}>
+                {Links.map((link) => (
+                  <NavLink key={link}>{link}</NavLink>
+                ))}
+              </Stack>
+            </Box>
+          ) : null}
+        </Container>
+      </SpaceBackground>
+    </Box>
+  );
+}

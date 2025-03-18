@@ -1,4 +1,4 @@
-import { DarkMode, extendTheme } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react";
 import textStyles from './textStyles';
 
 const config = {
