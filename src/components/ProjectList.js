@@ -8,10 +8,7 @@ const ProjectList = () => {
   const username = process.env.REACT_APP_GITHUB_USER_NAME;
 
   const [repositories, setRepositories] = useState([]);
-  // const [languages, setLanguages] = useState({});
-  // const [selectedLanguages, setSelectedLanguages] = useState([]);
   const [topics, setTopics] = useState({});
-  // const [filteredRepositories, setFilteredRepositories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -67,23 +64,6 @@ const ProjectList = () => {
     }
   };
 
-  // const handleCheckboxChange = (language) => {
-  //   const languageIndex = selectedLanguages.indexOf(language);
-  //   if (languageIndex !== -1) {
-  //     setSelectedLanguages(selectedLanguages.filter((_, index) => index !== languageIndex));
-  //   } else {
-  //     setSelectedLanguages([...selectedLanguages, language]);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   const filteredRepos = repositories.filter(repo => {
-  //     return selectedLanguages.length === 0 || selectedLanguages.every(lang => languages[repo.id]?.includes(lang));
-  //   });
-  //   setFilteredRepositories(filteredRepos);
-  // }, [selectedLanguages, repositories, languages]);
-
-
   if (isLoading) {
     return (
       <Stack h={'md'} align={'center'} justify={'center'}>
@@ -96,21 +76,6 @@ const ProjectList = () => {
   if (repositories.length === 0) {
     return (
       <>
-        {/* <Flex justify='flex-end' mb={'6'} wrap='wrap'>
-          {Object.values(languages)
-            .flatMap(lang => lang)
-            .filter((lang, index, self) => self.indexOf(lang) === index)
-            .map((lang, index) => (
-              <Checkbox
-                key={index} value={lang}
-                isChecked={selectedLanguages.includes(lang)}
-                onChange={() => handleCheckboxChange(lang)}
-                mb={[0, 2]} mr={[0, 4]}
-              >
-                {lang}
-              </Checkbox>
-            ))}
-        </Flex> */}
         <Stack h={'md'} align={'center'} justify={'center'}>
           <Heading fontSize={'2xl'} textAlign={'center'}>Sorry,<br />No repositories match the selected languages.</Heading>
         </Stack>
@@ -120,21 +85,6 @@ const ProjectList = () => {
 
   return (
     <>
-      {/* <Flex justify='flex-end' mb={'6'} wrap='wrap'>
-        {Object.values(languages)
-          .flatMap(lang => lang)
-          .filter((lang, index, self) => self.indexOf(lang) === index)
-          .map((lang, index) => (
-            <Checkbox
-              key={index} value={lang}
-              isChecked={selectedLanguages.includes(lang)}
-              onChange={() => handleCheckboxChange(lang)}
-              mb={[0, 2]} mr={[0, 4]}
-            >
-              {lang}
-            </Checkbox>
-          ))}
-      </Flex> */}
       <Grid templateColumns="repeat(auto-fit, minmax(300px, 1fr))" gap={5} align={'center'}>
         {repositories.map(repo => (
           <Link key={repo.id} as={NavLink} to={`/Portfolio/project/${repo.name}`} _hover={{ textDecoration: 'none' }}>

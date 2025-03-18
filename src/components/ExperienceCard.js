@@ -1,4 +1,6 @@
-import { Card, CardBody, CardHeader, Heading, Box, Text, Stack, StackDivider, UnorderedList, ListItem } from "@chakra-ui/react";
+import { Card, CardBody, CardHeader, Heading, Box, Text, Stack, StackDivider, UnorderedList, ListItem, Icon, HStack } from "@chakra-ui/react";
+import { FaCalendarDays, FaLocationDot } from "react-icons/fa6";
+
 
 const ExperienceCard = ({ title, company, period, duties }) => {
   return (
@@ -8,11 +10,14 @@ const ExperienceCard = ({ title, company, period, duties }) => {
       </CardHeader>
       <CardBody pt='0'>
         <Stack divider={<StackDivider />} spacing='2'>
-          <Box>
+          <HStack align={'center'} justify={'space-between'}>
             <Text size='xs' fontSize="14px" textTransform='uppercase'>
-              {company + period}
+              {company}
             </Text>
-          </Box>
+            <Text as='p' pt='2' fontSize='sm'>
+              {period}
+            </Text>
+          </HStack>
           <Box>
             <Heading size='xs' textTransform='uppercase'>
               Overview

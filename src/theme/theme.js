@@ -1,5 +1,10 @@
-import { extendTheme } from "@chakra-ui/react";
+import { DarkMode, extendTheme } from "@chakra-ui/react";
 import textStyles from './textStyles';
+
+const config = {
+  initialColorMode: 'dark',
+  useSystemColorMode: false,
+};
 
 const theme = extendTheme({
   colors: {
@@ -14,6 +19,9 @@ const theme = extendTheme({
       700: '#ED8936',
       800: '#DD6B20',
       900: '#C05621',
+    },
+    DarkMode: {
+      dark: '#182848'
     }
   },
   fonts: {
