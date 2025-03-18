@@ -1,6 +1,5 @@
 import { Container, Stack, Flex, Box, Text, Image, Heading, useColorModeValue } from "@chakra-ui/react";
 import introImg from "../assets/introImg.jpg";
-import WaveDivider from "../components/WaveDivider";
 import EducationCard from "../components/EducationCard";
 import ExperienceCard from "../components/ExperienceCard";
 import { motion } from "framer-motion";

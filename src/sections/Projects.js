@@ -1,11 +1,36 @@
-// src/components/Projects.jsx
 import React, { useState, useEffect } from 'react';
 import {
   Box, Container, Heading, Text, Stack, Image, useColorModeValue, SimpleGrid, Link, Spinner, HStack,
-  Button, Tag, TagLabel, LinkBox, LinkOverlay
+  Button, Tag, TagLabel, LinkBox, LinkOverlay, keyframes
 } from '@chakra-ui/react';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import defaultImage from '../assets/projectImg/default.png';
+import { useInView } from 'react-intersection-observer';
+
+// Individual animated card component
+const AnimatedCard = ({ children, index }) => {
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: false,
+  });
+
+  const fadeIn = keyframes`
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  `;
+
+  return (
+    <Box
+      ref={ref}
+      sx={{
+        animation: inView ? `${fadeIn} 0.8s ease-out forwards` : 'none',
+        opacity: 0
+      }}
+    >
+      {children}
+    </Box>
+  );
+};
 
 export default function Projects() {
   // Get color values at the top of the component
@@ -15,7 +40,7 @@ export default function Projects() {
   const textColor = useColorModeValue('gray.600', 'gray.400');
   const spinnerColor = useColorModeValue('brand.500', 'brand.300');
   const dateColor = useColorModeValue('gray.500', 'gray.400');
-  const bgGradient = useColorModeValue("linear(to-r, brown, primary.600)", "linear(to-l, #4b6cb7, #182848)")
+  const bgGradient = useColorModeValue("linear(to-r, brown, primary.600)", "linear(to-l, #4b6cb7, #182848)");
 
   const apiToken = process.env.REACT_APP_GITHUB_API_TOKEN;
   const username = process.env.REACT_APP_GITHUB_USER_NAME;
@@ -23,7 +48,17 @@ export default function Projects() {
   const [repositories, setRepositories] = useState([]);
   const [topics, setTopics] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [filter, setFilter] = useState('all');
+
+  // Animation for heading
+  const [headingRef, headingInView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+  });
+
+  const headingAnimation = keyframes`
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  `;
 
   useEffect(() => {
     const fetchRepositories = async () => {
@@ -92,17 +127,6 @@ export default function Projects() {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
-  // Filter repositories based on topics
-  const getFilteredRepositories = () => {
-    if (filter === 'all') return repositories;
-
-    return repositories.filter(repo => {
-      const repoTopics = topics[repo.id] || [];
-      return repoTopics.includes(filter);
-    });
-  };
-
-
   if (isLoading) {
     return (
       <Box id="projects" py={15} bg={bgColor}>
@@ -120,141 +144,142 @@ export default function Projects() {
     <Box id="projects" py={{ base: 5, md: 10 }} bg={bgColor}>
       <Container maxW="container.xl">
         <Stack spacing={10}>
-          <Heading
-            textAlign="center"
-            fontSize={{ base: '3xl', md: '4xl' }}
-            fontWeight="bold"
-            position="relative"
-            color={headingColor}
-          >
-            My Projects
-          </Heading>
-
-          {/* Filter buttons
-          <HStack spacing={4} justify="center" wrap="wrap" py={4}>
-            <Button
-              size="sm"
-              variant={filter === 'all' ? 'solid' : 'outline'}
-              colorScheme="brand"
-              onClick={() => setFilter('all')}
+          <Box ref={headingRef}>
+            <Heading
+              textAlign="center"
+              fontSize={{ base: '3xl', md: '4xl' }}
+              fontWeight="bold"
+              position="relative"
+              color={headingColor}
+              sx={{
+                animation: headingInView ? `${headingAnimation} 0.8s ease-out forwards` : 'none',
+                opacity: 0
+              }}
             >
-              All Projects
-            </Button>
-            {getUniqueTopics().map(topic => (
-              <Button
-                key={topic}
-                size="sm"
-                variant={filter === topic ? 'solid' : 'outline'}
-                colorScheme="brand"
-                onClick={() => setFilter(topic)}
-              >
-                {topic}
-              </Button>
-            ))}
-          </HStack> */}
+              My Projects
+            </Heading>
+          </Box>
 
           {/* Projects Grid */}
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10} mt={6}>
-            {getFilteredRepositories().map((repo) => (
-              <LinkBox
-                key={repo.id}
-                borderWidth="1px"
-                borderRadius="lg"
-                overflow="hidden"
-                boxShadow="lg"
-                bg={cardBgColor}
-                transition="transform 0.3s, box-shadow 0.3s"
-                _hover={{
-                  transform: 'translateY(-10px)',
-                  boxShadow: 'xl'
-                }}
-              >
-                <Box bg={'gray.100'} position={'relative'}>
-                  <DynamicImage repoName={repo.name} h={'100%'} w={'100%'} />
-                </Box>
+          <SimpleGrid
+            columns={{ base: 1, md: 2, lg: 3 }}
+            spacing={10}
+            mt={6}
+          >
+            {repositories.map((repo, index) => (
+              <AnimatedCard key={repo.id} index={index}>
+                <LinkBox
+                  borderWidth="1px"
+                  borderRadius="lg"
+                  overflow="hidden"
+                  boxShadow="lg"
+                  bg={cardBgColor}
+                  transition="transform 0.3s, box-shadow 0.3s"
+                  _hover={{
+                    transform: 'translateY(-10px)',
+                    boxShadow: 'xl'
+                  }}
+                >
+                  <Box bg={'gray.100'} position={'relative'}>
+                    <DynamicImage repoName={repo.name} h={'100%'} w={'100%'} />
+                  </Box>
 
-                <Box p={3}>
-                  <Stack spacing={3}>
-                    <Heading fontSize="xl" fontWeight="bold">
-                      <LinkOverlay href={repo.html_url} isExternal>
-                        {repo.name}
-                      </LinkOverlay>
-                    </Heading>
-                    <Text
-                      color={textColor}
-                      minH="3rem"
-                    >
-                      {getDescriptionExcerpt(repo.description)}
-                    </Text>
-
-                    {/* Topics tags */}
-                    <Box>
-                      <HStack spacing={2} mt={2} flexWrap="wrap">
-                        {(topics[repo.id] || []).map((topic) => (
-                          <Tag
-                            key={topic}
-                            size="sm"
-                            borderRadius="full"
-                            colorScheme="orange"
-                            variant="subtle"
-                          >
-                            <TagLabel>{topic}</TagLabel>
-                          </Tag>
-                        ))}
-                      </HStack>
-                    </Box>
-
-                    <Box mt={2}>
-                      <Text fontSize="sm" color={dateColor}>
-                        Created: {formatDate(repo.created_at)}
+                  <Box p={3}>
+                    <Stack spacing={3}>
+                      <Heading fontSize="xl" fontWeight="bold">
+                        <LinkOverlay href={repo.html_url} isExternal>
+                          {repo.name}
+                        </LinkOverlay>
+                      </Heading>
+                      <Text
+                        color={textColor}
+                        minH="3rem"
+                      >
+                        {getDescriptionExcerpt(repo.description)}
                       </Text>
-                      <Text fontSize="sm" color={dateColor}>
-                        Last updated: {formatDate(repo.updated_at)}
-                      </Text>
-                    </Box>
 
-                    <HStack mt={2}>
-                      <Link href={repo.html_url} isExternal flex={1}>
-                        <Button
-                          leftIcon={<FaGithub />}
-                          colorScheme="primary"
-                          w="100%"
-                        >
-                          Repo
-                        </Button>
-                      </Link>
+                      {/* Topics tags */}
+                      <Box>
+                        <HStack spacing={2} mt={2} flexWrap="wrap">
+                          {(topics[repo.id] || []).map((topic) => (
+                            <Tag
+                              key={topic}
+                              size="sm"
+                              borderRadius="full"
+                              colorScheme="orange"
+                              variant="subtle"
+                            >
+                              <TagLabel>{topic}</TagLabel>
+                            </Tag>
+                          ))}
+                        </HStack>
+                      </Box>
 
-                      {repo.homepage && (
-                        <Link href={repo.homepage} isExternal flex={1}>
+                      <Box mt={2}>
+                        <Text fontSize="sm" color={dateColor}>
+                          Created: {formatDate(repo.created_at)}
+                        </Text>
+                        <Text fontSize="sm" color={dateColor}>
+                          Last updated: {formatDate(repo.updated_at)}
+                        </Text>
+                      </Box>
+
+                      <HStack mt={2}>
+                        <Link href={repo.html_url} isExternal flex={1}>
                           <Button
-                            leftIcon={<FaExternalLinkAlt />}
+                            leftIcon={<FaGithub />}
                             colorScheme="primary"
                             w="100%"
+                            position="relative"
+                            overflow="hidden"
+                            transition="all 0.3s ease"
+                            _hover={{
+                              bgGradient: bgGradient,
+                              transform: 'translateY(-2px)',
+                            }}
                           >
-                            Demo
+                            Repo
                           </Button>
                         </Link>
-                      )}
-                    </HStack>
-                  </Stack>
-                </Box>
-              </LinkBox>
+
+                        {repo.homepage && (
+                          <Link href={repo.homepage} isExternal flex={1}>
+                            <Button
+                              leftIcon={<FaExternalLinkAlt />}
+                              colorScheme="primary"
+                              w="100%"
+                              position="relative"
+                              overflow="hidden"
+                              transition="all 0.3s ease"
+                              _hover={{
+                                bgGradient: bgGradient,
+                                transform: 'translateY(-2px)',
+                              }}
+                            >
+                              Demo
+                            </Button>
+                          </Link>
+                        )}
+                      </HStack>
+                    </Stack>
+                  </Box>
+                </LinkBox>
+              </AnimatedCard>
             ))}
           </SimpleGrid>
 
-          {getFilteredRepositories().length === 0 && (
+          {repositories.length === 0 && (
             <Box textAlign="center" py={10}>
               <Text fontSize="lg" color={textColor}>
-                No projects found with the selected filter.
+                No projects found.
               </Text>
             </Box>
           )}
         </Stack>
       </Container>
-    </Box >
+    </Box>
   );
 }
-
 
 // DynamicImage component that loads images dynamically
 const DynamicImage = ({ repoName }) => {

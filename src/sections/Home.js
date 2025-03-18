@@ -1,7 +1,6 @@
 import { Container, Stack, Box, Heading, Text, Button, useColorModeValue, Link } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import SpaceBackground from "../components/SpaceBackground";
-import { NonceProvider } from "react-select";
 
 const WavingHandAnimation = () => {
   return (

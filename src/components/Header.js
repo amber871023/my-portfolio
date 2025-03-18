@@ -8,14 +8,10 @@ const Links = ['Home', 'About', 'Skills', 'Projects', 'Contact'];
 
 const NavLink = ({ children }) => {
   return (
-    <Box
-      as="a"
-      px={2}
-      py={1}
-      rounded="md"
+    <Box as="a" px={2} py={1} rounded="md"
       _hover={{
         textDecoration: 'none',
-        bg: useColorModeValue('primary.200', 'gray.700'),
+        bg: useColorModeValue('primary.600', 'gray.700'),
       }}
       href={`#${children.toLowerCase()}`}
     >
@@ -29,14 +25,7 @@ export default function Header() {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <Box
-      as="header"
-      position="fixed"
-      w="100%"
-      zIndex={10}
-      bg={useColorModeValue('white', 'gray.900')}
-      transition="background-color 0.2s"
-    >
+    <Box as="header" position="fixed" w="100%" zIndex={10} boxShadow={'2xl'}>
       <SpaceBackground>
         <Container maxW="container.xl">
           <Flex h={16} alignItems="center" justifyContent="space-between">
@@ -47,15 +36,13 @@ export default function Header() {
               display={{ md: 'none' }}
               onClick={isOpen ? onClose : onOpen}
             />
-            <HStack spacing={1} alignItems="center">
-              <Box >
-                <Image src={useColorModeValue(logo, white_logo)} alt='yi ting' w={{ base: '120px', md: '150px' }} h={{ base: '50px', md: '55px' }} />
-              </Box>
-              <HStack as="nav" spacing={4} display={{ base: 'none', md: 'flex' }}>
-                {Links.map((link) => (
-                  <NavLink key={link}>{link}</NavLink>
-                ))}
-              </HStack>
+            <HStack alignItems="center">
+              <Image src={useColorModeValue(logo, white_logo)} alt='yi ting' w={{ base: '120px', md: '150px' }} h={{ base: '50px', md: '55px' }} />
+            </HStack>
+            <HStack as="nav" spacing={4} display={{ base: 'none', md: 'flex' }}>
+              {Links.map((link) => (
+                <NavLink key={link}>{link}</NavLink>
+              ))}
             </HStack>
             <Flex alignItems="center">
               <Button onClick={toggleColorMode} mr={4}>
