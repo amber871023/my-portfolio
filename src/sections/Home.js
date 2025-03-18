@@ -1,7 +1,7 @@
-import { Container, Stack, Box, Heading, Text, Button, useColorModeValue } from "@chakra-ui/react";
+import { Container, Stack, Box, Heading, Text, Button, useColorModeValue, Link } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { NavLink } from "react-router-dom";
 import SpaceBackground from "../components/SpaceBackground";
+import { NonceProvider } from "react-select";
 
 const WavingHandAnimation = () => {
   return (
@@ -21,7 +21,6 @@ const WavingHandAnimation = () => {
 };
 
 export default function Home() {
-  const buttonColor = useColorModeValue("")
   return (
     <SpaceBackground>
       < Container maxW={"6xl"} id="home" pt={10}>
@@ -61,16 +60,64 @@ export default function Home() {
               Building bridges between imagination and reality through software.
             </Text>
             <Box>
-              <Button as="a" href="/Resume.pdf" download="Resume.pdf" rounded="full" size="lg" colorScheme="orange" _hover={{ bgGradient: "linear(to-r, brown, primary.600)", color: "black" }}>
-                Resume
+              <Button as="a" href="/Resume.pdf" download="Resume.pdf" rounded="full" size="lg" bg="primary.700" textColor="black" _hover={{ bg: "primary.900", textColor: "white" }}>
+                Download Resume
               </Button>
-              <Button as={NavLink} to="/about" ml={4} rounded="full" size="lg" color={'black'}>
+              <Button as={Link} href="mailto:amber871023@gmail.com" isExternal
+                position="relative"
+                color="black" size="lg"
+                bg="transparent" ml={4}
+                overflow="hidden"
+                transition="all 0.3s ease"
+                sx={{
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: '0',
+                    left: '0',
+                    right: '0',
+                    bottom: '0',
+                    borderRadius: 'full',
+                    padding: '3px',
+                    background: 'linear-gradient(45deg, #de8e5c,#a52a2a)',
+                    WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                    WebkitMaskComposite: 'xor',
+                    maskComposite: 'exclude',
+                    transition: 'opacity 0.3s ease',
+                  },
+                  '&:hover': {
+                    color: 'white',
+                    transform: 'translateY(-2px)',
+                    borderRadius: 'full',
+                    textDecor: 'none',
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+                    '&::before': {
+                      opacity: 0,
+                    },
+                    background: 'linear-gradient(45deg, #de8e5c,#a52a2a)',
+                    _after: {
+                      opacity: 1,
+                      transform: 'scale(1)',
+                    }
+                  },
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    inset: '0',
+                    background: 'linear-gradient(45deg, #de8e5c,#a52a2a)',
+                    borderRadius: 'full',
+                    opacity: '0',
+                    transform: 'scale(0.9)',
+                    transition: 'opacity 0.3s ease, transform 0.3s ease',
+                    zIndex: '-1',
+                  }
+                }}>
                 Contact me
               </Button>
             </Box>
           </Stack>
         </Stack>
       </Container >
-    </SpaceBackground>
+    </SpaceBackground >
   );
 }

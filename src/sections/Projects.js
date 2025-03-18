@@ -14,7 +14,6 @@ export default function Projects() {
   const headingColor = useColorModeValue('gray.800', 'white');
   const textColor = useColorModeValue('gray.600', 'gray.400');
   const spinnerColor = useColorModeValue('brand.500', 'brand.300');
-  const accentColor = useColorModeValue('brand.500', 'brand.300');
   const dateColor = useColorModeValue('gray.500', 'gray.400');
   const bgGradient = useColorModeValue("linear(to-r, brown, primary.600)", "linear(to-l, #4b6cb7, #182848)")
 
@@ -106,7 +105,7 @@ export default function Projects() {
 
   if (isLoading) {
     return (
-      <Box id="projects" py={16} bg={bgColor}>
+      <Box id="projects" py={15} bg={bgColor}>
         <Container maxW="container.xl">
           <Stack h="md" align="center" justify="center">
             <Spinner size="xl" color={spinnerColor} />
@@ -118,7 +117,7 @@ export default function Projects() {
   }
 
   return (
-    <Box id="projects" py={16} bg={bgColor}>
+    <Box id="projects" py={{ base: 5, md: 10 }} bg={bgColor}>
       <Container maxW="container.xl">
         <Stack spacing={10}>
           <Heading
@@ -127,16 +126,6 @@ export default function Projects() {
             fontWeight="bold"
             position="relative"
             color={headingColor}
-            _after={{
-              content: "''",
-              width: '70px',
-              height: '4px',
-              backgroundColor: accentColor,
-              position: 'absolute',
-              bottom: '-12px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-            }}
           >
             My Projects
           </Heading>
@@ -184,7 +173,7 @@ export default function Projects() {
                   <DynamicImage repoName={repo.name} h={'100%'} w={'100%'} />
                 </Box>
 
-                <Box p={6}>
+                <Box p={3}>
                   <Stack spacing={3}>
                     <Heading fontSize="xl" fontWeight="bold">
                       <LinkOverlay href={repo.html_url} isExternal>
@@ -208,7 +197,6 @@ export default function Projects() {
                             borderRadius="full"
                             colorScheme="orange"
                             variant="subtle"
-                            mb={2}
                           >
                             <TagLabel>{topic}</TagLabel>
                           </Tag>

@@ -35,7 +35,6 @@ export default function Header() {
       w="100%"
       zIndex={10}
       bg={useColorModeValue('white', 'gray.900')}
-      boxShadow="md"
       transition="background-color 0.2s"
     >
       <SpaceBackground>

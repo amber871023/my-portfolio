@@ -17,7 +17,7 @@ export default function SpaceBackground({ children }) {
       {Array(30)
         .fill("")
         .map((_, i) => {
-          const size = `${Math.random() * 4 + 2}px`;
+          const size = `${Math.random() * 4 + 3}px`;
           return (
             <Box
               key={i}

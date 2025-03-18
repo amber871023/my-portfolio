@@ -12,7 +12,7 @@ export default function About() {
     <><Box bg={useColorModeValue('white', 'gray.900')} id="about">
       <Container maxW={{ base: 'xl', md: '5xl', lg: '7xl' }}>
         <Stack
-          py={{ base: 10, md: 10 }}
+          py={{ base: 5, md: 10 }}
           direction={{ base: 'column', md: 'row' }}
         >
           {/* Intro Image */}
@@ -20,10 +20,10 @@ export default function About() {
             px={{ base: "10", md: "60px" }}>
             <Box
               position={'relative'}
-              height={{ base: '360px', md: '420px', lg: '500px' }}
+              height={{ base: '50%', md: '80%', lg: '500px' }}
               rounded={'50%'}
               boxShadow={'2xl'}
-              width={'full'}
+              width={'100%'}
               overflow={'hidden'}
             >
               <Image src={introImg} alt={"Intro image"}
@@ -42,7 +42,7 @@ export default function About() {
             <MotionHeading
               fontWeight={600}
               fontSize={{ base: "3xl", md: "3xl", lg: "4xl" }}
-              bgGradient={useColorModeValue("linear(to-r, brown, primary.600)", "linear(to-l, #4b6cb7,rgb(96, 140, 228))")} bgClip="text"
+              bgGradient={useColorModeValue("linear(to-r, brown, primary.600)", "linear(to-l, #ffff, #4b6cb7)")} bgClip="text"
               initial={{ backgroundPosition: "0% 50%" }}
               animate={{ backgroundPosition: "100% 50%" }}
               transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
@@ -62,12 +62,11 @@ export default function About() {
           </Stack>
         </Stack>
       </Container>
-      <WaveDivider />
     </Box>
-      <Container maxW={{ base: 'xl', md: '2xl', lg: '6xl' }} my={10}>
+      <Container maxW={{ base: 'xl', md: '2xl', lg: '6xl' }} my={{ base: 5, md: 10 }}>
         <Stack direction={{ base: 'column', md: 'column', lg: 'row' }} w='full' justify={'space-between'} alignItems={'start'} spacing={10} >
           {/*  Experience */}
-          <Box>
+          <Box >
             <Heading fontSize={{ base: 'xl', md: '3xl' }} fontWeight='200' borderBottom='2px' borderColor='primary.400'>EXPERIENCE</Heading>
             <ExperienceCard
               title='Finance Part-Time'
