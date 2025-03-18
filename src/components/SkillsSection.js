@@ -1,4 +1,4 @@
-import { Box, Heading, Stack, Wrap, WrapItem, Tag, HStack, Icon, Text, Divider } from "@chakra-ui/react";
+import { Box, Heading, Stack, Wrap, WrapItem, Tag, HStack, Icon, Text, Divider, useColorModeValue } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaGitAlt, FaGithub, FaDatabase, FaAws, FaFigma } from "react-icons/fa";
 import { SiJavascript, SiMongodb, SiExpress, SiAdobexd, SiVuedotjs } from "react-icons/si";
@@ -46,11 +46,12 @@ const skillsData = [
 const MotionTag = motion(Tag);
 
 export default function SkillsSection() {
+  const categoryColor = useColorModeValue("gray.700", "white");
   return (
     <Stack mb={2}>
       {skillsData.map((category, index) => (
         <Box key={index}>
-          <Heading as="h3" size="md" mb={3} color="gray.700">
+          <Heading as="h3" size="md" mb={3} color={categoryColor}>
             {category.category}
           </Heading>
           <Wrap>
