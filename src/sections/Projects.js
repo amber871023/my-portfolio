@@ -141,7 +141,7 @@ export default function Projects() {
   }
 
   return (
-    <Box id="projects" py={{ base: 5, md: 10 }} bg={bgColor}>
+    <Box id="projects" py={{ base: 5, md: 10 }} bg={bgColor} scrollMarginTop={'50px'}>
       <Container maxW="container.xl">
         <Stack spacing={10}>
           <Box ref={headingRef}>
@@ -235,6 +235,7 @@ export default function Projects() {
                             transition="all 0.3s ease"
                             _hover={{
                               bgGradient: bgGradient,
+                              color: 'white',
                               transform: 'translateY(-2px)',
                             }}
                           >
@@ -253,6 +254,7 @@ export default function Projects() {
                               transition="all 0.3s ease"
                               _hover={{
                                 bgGradient: bgGradient,
+                                color: 'white',
                                 transform: 'translateY(-2px)',
                               }}
                             >

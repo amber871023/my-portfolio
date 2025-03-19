@@ -20,6 +20,7 @@ const WavingHandAnimation = () => {
 };
 
 export default function Home() {
+  const buttonGradient = useColorModeValue("linear(to-r, brown, primary.600)", "linear(to-l, #4b6cb7, #182848)");
   return (
     <SpaceBackground>
       < Container maxW={"6xl"} id="home" pt={10}>
@@ -58,10 +59,16 @@ export default function Home() {
             <Text color="gray.500" textStyle="h3">
               Building bridges between imagination and reality through software.
             </Text>
-            <Box>
-              <Button as="a" href="/Resume.pdf" download="Resume.pdf" rounded="full" size="lg" bg="primary.700" textColor="black" _hover={{ bg: "primary.900", textColor: "white" }}>
+            <Box>{
+              <Button as="a" href="/Resume.pdf" download="Resume.pdf" rounded="full" size="lg" bg={useColorModeValue("primary.700", "blue.600")} textColor="white"
+                _hover={{
+                  bgGradient: buttonGradient, textColor: "white",
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+                }}>
                 Download Resume
               </Button>
+            }
               <Button as={Link} href="mailto:amber871023@gmail.com" isExternal
                 position="relative"
                 color="black" size="lg"

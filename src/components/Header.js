@@ -4,9 +4,9 @@ import { Box, Flex, HStack, IconButton, Button, useDisclosure, useColorModeValue
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import SpaceBackground from './SpaceBackground';
 
-const Links = ['Home', 'About', 'Skills', 'Projects', 'Contact'];
+const Links = ['Home', 'About', 'Skills', 'Projects'];
 
-const NavLink = ({ children }) => {
+const NavLink = ({ children, onClick }) => {
   return (
     <Box as="a" px={2} py={1} rounded="md"
       _hover={{
@@ -14,6 +14,7 @@ const NavLink = ({ children }) => {
         bg: useColorModeValue('primary.600', 'gray.700'),
       }}
       href={`#${children.toLowerCase()}`}
+      onClick={onClick}
     >
       {children}
     </Box>
@@ -24,6 +25,11 @@ export default function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
 
+  const handleLinkClick = () => {
+    if (isOpen) {
+      onClose();
+    }
+  }
   return (
     <Box as="header" position="fixed" w="100%" zIndex={10} boxShadow={'2xl'}>
       <SpaceBackground>
@@ -55,7 +61,7 @@ export default function Header() {
             <Box pb={4} display={{ md: 'none' }}>
               <Stack as="nav" spacing={4} align={'center'}>
                 {Links.map((link) => (
-                  <NavLink key={link}>{link}</NavLink>
+                  <NavLink key={link} onClick={handleLinkClick}>{link}</NavLink>
                 ))}
               </Stack>
             </Box>

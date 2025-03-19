@@ -11,7 +11,8 @@ export default function Skills() {
   return (
     <MotionBox
       id="skills"
-      pb={10}
+      scrollMarginTop={'64px'}
+      mb={10}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: false }}

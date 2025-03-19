@@ -8,7 +8,7 @@ const MotionHeading = motion(Heading);
 
 export default function About() {
   return (
-    <><Box bg={useColorModeValue('white', 'gray.900')} id="about">
+    <><Box bg={useColorModeValue('white', 'gray.900')} id="about" scrollMarginTop={'50px'}>
       <Container maxW={{ base: 'xl', md: '5xl', lg: '7xl' }}>
         <Stack
           py={{ base: 5, md: 10 }}

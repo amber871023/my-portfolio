@@ -1,38 +1,47 @@
 # Welcome to [My Portfolio project](https://my-portfolio-yiting.vercel.app/) 👋
 
 ## Purpose
-This project serves as my personal portfolio, showcasing my personal information, resume, and my works of GitHub projects and photography albums.
+
+This project serves as my personal portfolio, showcasing my personal information, resume, and my works of GitHub projects.
 
 ## How to Contribute
 Thank you for considering contributing to my portfolio!  Feel free to submit issues, feature requests, or pull requests on my GitHub repository.
 
+Thank you for considering contributing to my portfolio! Feel free to submit issues, feature requests, or pull requests on my GitHub repository.
+
 If you'd like to contribute, you can follow these steps:
+
 1. Fork this repository.
 2. Create a new branch for your feature (`git checkout -b feature/new-feature`).
 3. Make your changes.
 4. Commit your changes (`git commit -am 'Add new feature'`).
 5. Push to the branch (`git push origin feature/new-feature`).
 6. Create a new Pull Request.
-`
+   `
+
 ## Features
-- Home page:
-   * Hero image and text provide a quick introduction. People can click "More About Me" button to nevigate to the About page.
-- About page:
-  *  Display more detailed information about who am I.
-- Resume page:
-  *  Display an overview summary ,Working history , my technique skills, publications and education details.
-- Portfolio page:
-  * Display GitHub projects with project details, commits, and links to GitHub and Demo.
-  * Show photography albums with filtering by category and display photos in a gallery.
+
+- Home section:
+  - Hero image and text provide a quick introduction. People can click "More About Me" button to nevigate to the About page.
+- About section:
+  - Display more detailed information about who am I.
+- Skills section:
+  - Display an overview summary ,Working history , my technique skills, publications and education details.
+- Projects section:
+  - Display GitHub projects with project details, and links to GitHub and Demo.
 
 ## Dependencies
+
 To install the necessary dependencies, simply run:
+
 ```sh
  npm install
 ```
+
 This will automatically install all the dependencies listed in the package.json file.
 
 If you prefer to install dependencies individually, here's a list along with the commands to install each one separately:
+
 - React Router DOM: For routing within the application.
   ```sh
   npm install react-router-dom
@@ -55,23 +64,30 @@ If you prefer to install dependencies individually, here's a list along with the
   ```
 
 ## Website Architecture
-This website is designed to provide a dynamic and responsive user interface. It utilizes multiple components to manage different parts of the website and fetches data from external APIs such as GitHub and Flickr, making asynchronous requests to retrieve information such as user repositories, images, etc. The UI components are styled using Chakra UI for a consistent and visually appealing design. 
+
+This website is designed to provide a dynamic and responsive user interface. It utilizes multiple components to manage different parts of the website and fetches data from external APIs such as GitHub and Flickr, making asynchronous requests to retrieve information such as user repositories, images, etc. The UI components are styled using Chakra UI for a consistent and visually appealing design.
+
 ### Technologies Used
+
 - Frontend Framework: ReactJS
 - Styling Library: Chakra UI
 - Data Fetching: REST API
 
 ## Issue Reporting
-If you encounter any issues with my project, please feel free to report them on the [GitHub Issues](https://github.com/amber871023/my-portfolio/issues) page. 
+
+If you encounter any issues with my project, please feel free to report them on the [GitHub Issues](https://github.com/amber871023/my-portfolio/issues) page.
 Provide detailed information about the problem you encountered and steps to reproduce it.
 
 ## License
+
 This project is licensed under the [MIT License](LICENSE).
 
 ## Do you like it?
-If you like it, please star this project⭐, and consider following me on [GitHub]((https://github.com/amber871023)) Thank you!
+
+If you like it, please star this project⭐, and consider following me on [GitHub](<(https://github.com/amber871023)>) Thank you!
 
 ---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
