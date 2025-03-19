@@ -50,7 +50,7 @@ export default function Home() {
               </Text>
               <br />
               <Text as="span" bgGradient={colorGradient} bgClip="text">
-                I'm Yi Ting
+                I'm Amber
               </Text>
               <br />
               <Text as="span">
@@ -133,9 +133,6 @@ export default function Home() {
               </Link>
               <Link href="https://github.com/amber871023" isExternal>
                 <IconButton icon={<FaGithub />} aria-label="Github" color="black" variant="ghost" fontSize='30px' />
-              </Link>
-              <Link href="https://www.facebook.com/amberCYT" isExternal>
-                <IconButton icon={<FaFacebookSquare />} aria-label="Facebook" color="black" variant="ghost" fontSize='30px' />
               </Link>
             </HStack>
           </Stack>

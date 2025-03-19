@@ -53,7 +53,7 @@ export default function About() {
               Know more about me...
             </MotionHeading>
             <Text color={useColorModeValue('gray.600', "gray.50")} textStyle={'h4'}>
-              Hi, I'm Yi Ting, also known as Amber. I am a front-end developer with a Master’s degree in Software Development from QUT. I'm someone with an insatiable passion for learning programming languages to continually enhance my skills and broaden my horizons. Being in the tech world brings me so much joy, especially when I'm faced with challenges that push me to get better every day.
+              I am a front-end developer with a Master’s degree in Software Development from QUT. I'm someone with an insatiable passion for learning programming languages to continually enhance my skills and broaden my horizons. Being in the tech world brings me so much joy, especially when I'm faced with challenges that push me to get better every day.
             </Text>
             <Text color={useColorModeValue('gray.600', "gray.50")} textStyle={'h4'}>
               Beyond coding, I have a keen interest in UI design, with a focus on crafting visually appealing and intuitive interfaces for websites.
