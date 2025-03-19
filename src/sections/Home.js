@@ -1,7 +1,7 @@
-import { Container, Stack, HStack, Box, Heading, Text, Button, useColorModeValue, Link, IconButton } from "@chakra-ui/react";
+import { Container, Stack, HStack, Box, Heading, Text, Button, useColorModeValue, Link, IconButton, Icon } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import SpaceBackground from "../components/SpaceBackground";
-import { FaLinkedin, FaGithub, FaFacebookSquare } from 'react-icons/fa';
+import { FaDownload, FaLinkedin, FaGithub, FaFacebookSquare } from 'react-icons/fa';
 
 const WavingHandAnimation = () => {
   return (
@@ -63,13 +63,14 @@ export default function Home() {
             <Box>{
               <Button as="a" href="/Resume.pdf" download="Resume.pdf" rounded="full" size={{
                 base: "md", md: "lg"
-              }} bg={useColorModeValue("primary.700", "blue.600")} textColor="white"
+              }} bg={useColorModeValue("primary.700", "blue.700")} textColor="white"
                 _hover={{
                   bgGradient: colorGradient, textColor: "white",
                   transform: 'translateY(-2px)',
                   boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
                 }}>
-                Download Resume
+                <Icon as={FaDownload} mr={3} size={'sm'}></Icon>
+                Resume
               </Button>
             }
               <Button as={Link} href="mailto:amber871023@gmail.com" isExternal
