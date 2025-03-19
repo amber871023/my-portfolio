@@ -1,7 +1,7 @@
 import { Box, Container, Stack, Image, Text, HStack, VStack, Spacer, Heading, IconButton, Link } from '@chakra-ui/react'
 import logo from '../assets/logo_white.png';
 import { Link as RouterLink } from 'react-router-dom';
-import { FaEnvelope, FaLinkedin, FaGithub, FaFacebookSquare } from 'react-icons/fa';
+import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
 import SpaceBackground from './SpaceBackground';
 
 const MenuItems = ['Home', 'About', 'Skills', 'Project', 'Contact'];
@@ -32,9 +32,6 @@ export default function Footer() {
             <Link href="https://github.com/amber871023" isExternal>
               <IconButton icon={<FaGithub />} aria-label="Github" color="white" variant="ghost" fontSize='30px' />
             </Link>
-            <Link href="https://www.facebook.com/amberCYT" isExternal>
-              <IconButton icon={<FaFacebookSquare />} aria-label="Facebook" color="white" variant="ghost" fontSize='30px' />
-            </Link>
           </Box>
           {/* logo and copyright */}
           <VStack>
@@ -58,9 +55,6 @@ export default function Footer() {
             </Link>
             <Link href="https://github.com/amber871023" isExternal>
               <IconButton icon={<FaGithub />} aria-label="Github" color="white" variant="ghost" fontSize='30px' />
-            </Link>
-            <Link href="https://www.facebook.com/amberCYT" isExternal>
-              <IconButton icon={<FaFacebookSquare />} aria-label="Facebook" color="white" variant="ghost" fontSize='30px' />
             </Link>
           </Box>
         </Stack>

@@ -14,21 +14,70 @@ export default function About() {
           py={{ base: 5, md: 10 }}
           direction={{ base: 'column', md: 'row' }}
         >
-          {/* Intro Image */}
-          <Flex flex={1} position={"relative"}
-            px={{ base: "10", md: "60px" }}>
+          {/* Intro Image  */}
+          <Flex
+            flex={1}
+            position="relative"
+            px={{ base: "5", sm: "10", md: "20", lg: "60px" }}
+            justify="center"
+            align="center"
+          >
+            {/* Background decorative element */}
             <Box
-              position={'relative'}
-              height={{ base: '50%', md: '80%', lg: '500px' }}
-              rounded={'50%'}
-              boxShadow={'2xl'}
-              width={'100%'}
-              overflow={'hidden'}
+              position="absolute"
+              width={{ base: "220px", sm: "260px", md: "310px", lg: "370px" }}
+              height={{ base: "220px", sm: "260px", md: "310px", lg: "370px" }}
+              rounded="50%"
+              bg={useColorModeValue("primary.50", "blue.50")}
+              transform="translate(10px, 10px)"
+              zIndex={0}
+              display={{ base: "none", sm: "block" }}
+            />
+
+            {/* Main image container */}
+            <Box
+              position="relative"
+              rounded="50%"
+              overflow="hidden"
+              boxShadow="xl"
+              width={{ base: "230px", sm: "260px", md: "300px", lg: "350px" }}
+              height={{ base: "230px", sm: "260px", md: "300px", lg: "350px" }}
+              border="4px solid"
+              borderColor={useColorModeValue("primary.400", "blue.600")}
+              zIndex={1}
+              _before={{
+                content: '""',
+                position: "absolute",
+                bg: useColorModeValue("primary.50", "blue.50"),
+                opacity: "0.1",
+                zIndex: 2
+              }}
             >
-              <Image src={introImg} alt={"Intro image"}
-                fit={"cover"}
-                w={"100%"} h={"115%"} />
+              <Image
+                src={introImg}
+                alt="Intro image"
+                objectFit="cover"
+                width="100%"
+                height="100%"
+                zIndex={1}
+                transition="transform 0.3s ease"
+                _hover={{ transform: "scale(1.05)" }}
+              />
             </Box>
+
+            {/* Decorative accent shape */}
+            <Box
+              position="absolute"
+              width="80px"
+              height="80px"
+              bg={useColorModeValue("primary.400", "blue.300")}
+              rounded="full"
+              bottom={{ base: "-5px", md: "10px" }}
+              right={{ base: "20%", md: "15%" }}
+              opacity="0.7"
+              zIndex={0}
+              display={{ base: "none", md: "block" }}
+            />
           </Flex>
           {/* Intro of myself  */}
           <Stack flex={1}
