@@ -36,8 +36,8 @@ export default function Home() {
             flex={1}
             bg={useColorModeValue("white", "gray.200")}
             opacity={'90%'}
-            py={{ base: 10, md: "60px" }}
-            px={{ base: 10, md: "60px" }}
+            py={{ base: 10, md: "50px" }}
+            px={{ base: 10, md: "50px" }}
             rounded="2xl"
             spacing={{ base: 4, md: 5 }}
             textAlign="left"

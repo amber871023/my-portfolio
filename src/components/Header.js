@@ -23,8 +23,6 @@ const NavLink = ({ children, onClick }) => {
 export default function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
-  const colorGradient = useColorModeValue("linear(to-l, primary.700, primary.50)", "linear(to-l, #4b6cb7,rgb(180, 194, 223))");
-
 
   const handleLinkClick = () => {
     if (isOpen) {

@@ -31,6 +31,7 @@ export default function About() {
               bg={useColorModeValue("primary.50", "blue.50")}
               transform="translate(10px, 10px)"
               zIndex={0}
+              opacity={'70%'}
               display={{ base: "none", sm: "block" }}
             />
 
@@ -39,7 +40,7 @@ export default function About() {
               position="relative"
               rounded="50%"
               overflow="hidden"
-              boxShadow="xl"
+              boxShadow="2xl"
               width={{ base: "230px", sm: "260px", md: "300px", lg: "350px" }}
               height={{ base: "230px", sm: "260px", md: "300px", lg: "350px" }}
               border="4px solid"
