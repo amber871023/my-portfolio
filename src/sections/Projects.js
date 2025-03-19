@@ -304,5 +304,5 @@ const DynamicImage = ({ repoName }) => {
     loadImage();
   }, [repoName]);
 
-  return <Image src={imageSrc} alt={repoName} objectFit={'cover'} h={'100%'} />;
+  return <Image src={imageSrc} alt={repoName} objectFit={'cover'} h={'auto'} />;
 };
