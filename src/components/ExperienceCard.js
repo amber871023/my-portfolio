@@ -1,23 +1,19 @@
 import { Card, CardBody, CardHeader, Heading, Box, Text, Stack, StackDivider, UnorderedList, ListItem, HStack } from "@chakra-ui/react";
-import { FaCalendarDays, FaLocationDot } from "react-icons/fa6";
 
-
-const ExperienceCard = ({ title, company, period, duties }) => {
+const ExperienceCard = ({ title, company, period, duties, location }) => {
   return (
     <Card boxShadow='md' mt='3'>
-      <CardHeader pb='0'>
-        <Heading fontSize={{ base: '16px', md: '18px' }}>{title}</Heading>
+      <CardHeader as={HStack} pb='0' justifyContent={'space-between'}>
+        <Heading fontSize={{ base: '16px', md: '20px' }}>{title}</Heading>
+        <Text fontSize='sm' fontWeight={600}>
+          {period}
+        </Text>
       </CardHeader>
       <CardBody pt='0'>
         <Stack divider={<StackDivider />} spacing='2'>
-          <HStack align={'center'} justify={'space-between'}>
-            <Text size='xs' fontSize="14px" textTransform='uppercase'>
-              {company}
-            </Text>
-            <Text as='p' pt='2' fontSize='sm'>
-              {period}
-            </Text>
-          </HStack>
+          <Text fontSize="14px" >
+            {company} | {location}
+          </Text>
           <Box>
             <Heading size='xs' textTransform='uppercase'>
               Overview
@@ -30,7 +26,7 @@ const ExperienceCard = ({ title, company, period, duties }) => {
           </Box>
         </Stack>
       </CardBody>
-    </Card>
+    </Card >
   );
 };
 

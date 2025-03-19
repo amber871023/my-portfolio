@@ -65,11 +65,12 @@ export default function About() {
       <Container maxW={{ base: 'xl', md: '2xl', lg: '6xl' }} my={{ base: 5, md: 10 }}>
         <Stack direction={{ base: 'column', md: 'column', lg: 'row' }} w='full' justify={'space-between'} alignItems={'start'} spacing={10} >
           {/*  Experience */}
-          <Box >
+          <Box w={'full'}>
             <Heading fontSize={{ base: 'xl', md: '3xl' }} fontWeight='200' borderBottom='2px' borderColor='primary.400'>EXPERIENCE</Heading>
             <ExperienceCard
               title='Finance Part-Time'
-              company='JMO - Zhong Yang Technology Co., Ltd.'
+              company='Zhong Yang Technology Co., Ltd.'
+              location='Taichung City, Taiwan'
               period='July 2017 - Aug 2017'
               duties={[
                 'Assisting in the handling of company listing and finance department related matters.',
@@ -80,20 +81,21 @@ export default function About() {
             />
           </Box>
           {/*  Education */}
-          <Box>
+          <Box w={'full'}>
             <Heading fontSize={{ base: 'xl', md: '3xl' }} fontWeight='200' borderBottom='2px' borderColor='primary.400'>EDUCATION</Heading>
             <EducationCard
-              title='Master of IT - Queensland University of Technology'
+              title='Master of IT - Software Development '
+              university='Queensland University of Technology'
               period='Feb 2023- Nov 2024'
-              location='Brisbane, Queensland, Australia'
-              gpa='Current GPA: 6.31/7.00'
+              gpa='GPA: 6.31/7.00'
+              activeties='Activities & Societies : QUT Women in Tech club'
             />
             <EducationCard
-              title='Bachelor of MIS - National Yunlin University of Science and Technology'
-              period='2017-2021'
-              location='Yunlin, Taiwan'
+              title='Bachelor of Information Management'
+              period='Sep 2017- Jun 2021'
+              university=' National Yunlin University of Science and Technology'
               gpa='GPA: 3.32/4.00'
-              activeties='Activities and societies : Dance club'
+              activeties='Activities & Societies : Dance club'
             />
           </Box>
         </Stack>

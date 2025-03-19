@@ -5,7 +5,6 @@
 This project serves as my personal portfolio, showcasing my personal information, resume, and my works of GitHub projects.
 
 ## How to Contribute
-Thank you for considering contributing to my portfolio!  Feel free to submit issues, feature requests, or pull requests on my GitHub repository.
 
 Thank you for considering contributing to my portfolio! Feel free to submit issues, feature requests, or pull requests on my GitHub repository.
 
@@ -19,15 +18,15 @@ If you'd like to contribute, you can follow these steps:
 6. Create a new Pull Request.
    `
 
-## Features
+## Sections
 
-- Home section:
-  - Hero image and text provide a quick introduction. People can click "More About Me" button to nevigate to the About page.
-- About section:
-  - Display more detailed information about who am I.
-- Skills section:
-  - Display an overview summary ,Working history , my technique skills, publications and education details.
-- Projects section:
+- Home:
+  - Hero image and text provide a quick introduction.
+- About:
+  - Display more detailed information which display an overview summary, experience and education details.
+- Skills:
+  - Display my technique skills.
+- Projects:
   - Display GitHub projects with project details, and links to GitHub and Demo.
 
 ## Dependencies

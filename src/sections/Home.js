@@ -1,6 +1,7 @@
-import { Container, Stack, Box, Heading, Text, Button, useColorModeValue, Link } from "@chakra-ui/react";
+import { Container, Stack, HStack, Box, Heading, Text, Button, useColorModeValue, Link, IconButton } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import SpaceBackground from "../components/SpaceBackground";
+import { FaLinkedin, FaGithub, FaFacebookSquare } from 'react-icons/fa';
 
 const WavingHandAnimation = () => {
   return (
@@ -20,10 +21,10 @@ const WavingHandAnimation = () => {
 };
 
 export default function Home() {
-  const buttonGradient = useColorModeValue("linear(to-r, brown, primary.600)", "linear(to-l, #4b6cb7, #182848)");
+  const colorGradient = useColorModeValue("linear(to-r, brown, primary.600)", "linear(to-l, #4b6cb7, #182848)");
   return (
     <SpaceBackground>
-      < Container maxW={"6xl"} id="home" pt={10}>
+      < Container maxW={"7xl"} id="home" pt={10}>
         <Stack
           align={"center"}
           spacing={{ base: 8, md: 10 }}
@@ -35,8 +36,8 @@ export default function Home() {
             flex={1}
             bg={useColorModeValue("white", "gray.200")}
             opacity={'90%'}
-            py={{ base: "10", md: "100px" }}
-            px={{ base: "10", md: "60px" }}
+            py={{ base: 10, md: "60px" }}
+            px={{ base: 10, md: "60px" }}
             rounded="2xl"
             spacing={{ base: 4, md: 5 }}
             textAlign="left"
@@ -48,7 +49,7 @@ export default function Home() {
                 Hello, <WavingHandAnimation />
               </Text>
               <br />
-              <Text as="span" bgGradient={useColorModeValue("linear(to-r, brown, primary.600)", "linear(to-l, #4b6cb7, #182848)")} bgClip="text">
+              <Text as="span" bgGradient={colorGradient} bgClip="text">
                 I'm Yi Ting
               </Text>
               <br />
@@ -62,7 +63,7 @@ export default function Home() {
             <Box>{
               <Button as="a" href="/Resume.pdf" download="Resume.pdf" rounded="full" size="lg" bg={useColorModeValue("primary.700", "blue.600")} textColor="white"
                 _hover={{
-                  bgGradient: buttonGradient, textColor: "white",
+                  bgGradient: colorGradient, textColor: "white",
                   transform: 'translateY(-2px)',
                   boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
                 }}>
@@ -121,6 +122,17 @@ export default function Home() {
                 Contact me
               </Button>
             </Box>
+            <HStack>
+              <Link href='https://linkedin.com/in/amber-cheng-202396227/' isExternal>
+                <IconButton icon={<FaLinkedin />} aria-label="LinkedIn" color="black" variant="ghost" fontSize='30px' />
+              </Link>
+              <Link href="https://github.com/amber871023" isExternal>
+                <IconButton icon={<FaGithub />} aria-label="Github" color="black" variant="ghost" fontSize='30px' />
+              </Link>
+              <Link href="https://www.facebook.com/amberCYT" isExternal>
+                <IconButton icon={<FaFacebookSquare />} aria-label="Facebook" color="black" variant="ghost" fontSize='30px' />
+              </Link>
+            </HStack>
           </Stack>
         </Stack>
       </Container >
