@@ -3,8 +3,8 @@ const EducationCard = ({ title, period, university, gpa, activeties }) => {
   return (
     <Card boxShadow='md' mt='3'>
       <CardHeader as={HStack} pb='0' justifyContent={'space-between'} >
-        <Heading size='sm'>{title}</Heading>
-        <Text fontSize='sm' fontWeight={600}>
+        <Heading fontSize={{ base: 'md', md: 'sm' }}>{title}</Heading>
+        <Text fontSize={{ base: 'xs', md: 'sm' }} fontWeight={600}>
           {period}
         </Text>
       </CardHeader>

@@ -61,7 +61,9 @@ export default function Home() {
               Building bridges between imagination and reality through software.
             </Text>
             <Box>{
-              <Button as="a" href="/Resume.pdf" download="Resume.pdf" rounded="full" size="lg" bg={useColorModeValue("primary.700", "blue.600")} textColor="white"
+              <Button as="a" href="/Resume.pdf" download="Resume.pdf" rounded="full" size={{
+                base: "md", md: "lg"
+              }} bg={useColorModeValue("primary.700", "blue.600")} textColor="white"
                 _hover={{
                   bgGradient: colorGradient, textColor: "white",
                   transform: 'translateY(-2px)',
@@ -72,7 +74,9 @@ export default function Home() {
             }
               <Button as={Link} href="mailto:amber871023@gmail.com" isExternal
                 position="relative"
-                color="black" size="lg"
+                color="black" size={{
+                  base: "md", md: "lg"
+                }}
                 bg="transparent" ml={4}
                 overflow="hidden"
                 transition="all 0.3s ease"

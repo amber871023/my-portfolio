@@ -5,7 +5,7 @@ const ExperienceCard = ({ title, company, period, duties, location }) => {
     <Card boxShadow='md' mt='3'>
       <CardHeader as={HStack} pb='0' justifyContent={'space-between'}>
         <Heading fontSize={{ base: '16px', md: '20px' }}>{title}</Heading>
-        <Text fontSize='sm' fontWeight={600}>
+        <Text fontSize={{ base: 'xs', md: 'sm' }} fontWeight={600}>
           {period}
         </Text>
       </CardHeader>
