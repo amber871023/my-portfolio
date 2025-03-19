@@ -9,7 +9,7 @@ const twinkle = keyframes`
 export default function SpaceBackground({ children }) {
   return (
     <Box
-      bgGradient={useColorModeValue("linear(270deg, brown, primary.600)", "linear(270deg, #182848,gray.900)")}
+      bgGradient={useColorModeValue("linear(to-r, brown, primary.600)", "linear(270deg, #182848,gray.900)")}
       position="relative"
       overflow="hidden"
     >

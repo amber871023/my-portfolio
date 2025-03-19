@@ -24,7 +24,7 @@ export default function Home() {
   const colorGradient = useColorModeValue("linear(to-r, brown, primary.600)", "linear(to-l, #4b6cb7, #182848)");
   return (
     <SpaceBackground>
-      < Container maxW={"7xl"} id="home" pt={10}>
+      < Container maxW={{ base: '2xl', md: '5xl', lg: '7xl' }} id="home" pt={10}>
         <Stack
           align={"center"}
           spacing={{ base: 8, md: 10 }}

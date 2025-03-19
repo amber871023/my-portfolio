@@ -1,4 +1,3 @@
-import logo from '../assets/logo.png';
 import white_logo from '../assets/logo_white.png';
 import { Box, Flex, HStack, IconButton, Button, useDisclosure, useColorModeValue, useColorMode, Stack, Container, Image } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
@@ -24,6 +23,8 @@ const NavLink = ({ children, onClick }) => {
 export default function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
+  const colorGradient = useColorModeValue("linear(to-l, primary.700, primary.50)", "linear(to-l, #4b6cb7,rgb(180, 194, 223))");
+
 
   const handleLinkClick = () => {
     if (isOpen) {
@@ -43,7 +44,7 @@ export default function Header() {
               onClick={isOpen ? onClose : onOpen}
             />
             <HStack alignItems="center">
-              <Image src={useColorModeValue(logo, white_logo)} alt='yi ting' w={{ base: '120px', md: '150px' }} h={{ base: '50px', md: '55px' }} />
+              <Image src={white_logo} alt='yi ting' w='40px' h='40px' />
             </HStack>
             <HStack as="nav" spacing={4} display={{ base: 'none', md: 'flex' }}>
               {Links.map((link) => (

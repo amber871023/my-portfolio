@@ -1,6 +1,5 @@
 import { Box, Container, Stack, Image, Text, HStack, VStack, Spacer, Heading, IconButton, Link } from '@chakra-ui/react'
 import logo from '../assets/logo_white.png';
-import { Link as RouterLink } from 'react-router-dom';
 import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
 import SpaceBackground from './SpaceBackground';
 
@@ -34,10 +33,10 @@ export default function Footer() {
             </Link>
           </Box>
           {/* logo and copyright */}
-          <VStack>
-            <Box as={RouterLink} to={'/'}>
-              <Image src={logo} alt='yi ting' w="150px" h="60px" />
-            </Box>
+          <VStack justifyContent={'center'}>
+            <Link href='#home' display={{ base: 'none', md: 'block' }} >
+              <Image src={logo} alt='yi ting' w="50px" h="50px" />
+            </Link>
             <Text borderTopWidth={1} borderStyle={'solid'} borderColor={'white'}>© 2024 YiTing Cheng. All rights reserved</Text>
           </VStack>
           <Spacer />
