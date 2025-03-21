@@ -39,7 +39,7 @@ export default function Projects() {
   const headingColor = useColorModeValue('gray.800', 'white');
   const textColor = useColorModeValue('gray.600', 'gray.400');
   const dateColor = useColorModeValue('gray.500', 'gray.400');
-  const bgGradient = useColorModeValue("linear(to-r, brown, primary.600)", "linear(to-l, #4b6cb7, #182848)");
+  const btnColor = useColorModeValue("teal", "blue");
 
   const apiToken = process.env.REACT_APP_GITHUB_API_TOKEN;
   const username = process.env.REACT_APP_GITHUB_USER_NAME;
@@ -199,7 +199,7 @@ export default function Projects() {
                                 key={topic}
                                 size="sm"
                                 borderRadius="full"
-                                colorScheme="orange"
+                                colorScheme="blue"
                                 variant="subtle"
                               >
                                 <TagLabel>{topic}</TagLabel>
@@ -221,16 +221,10 @@ export default function Projects() {
                           <Link href={repo.html_url} isExternal flex={1}>
                             <Button
                               leftIcon={<FaGithub />}
-                              colorScheme="primary"
-                              w="100%"
+                              colorScheme={btnColor} w="100%"
                               position="relative"
                               overflow="hidden"
                               transition="all 0.3s ease"
-                              _hover={{
-                                bgGradient: bgGradient,
-                                color: 'white',
-                                transform: 'translateY(-2px)',
-                              }}
                             >
                               Repo
                             </Button>
@@ -240,16 +234,11 @@ export default function Projects() {
                             <Link href={repo.homepage} isExternal flex={1}>
                               <Button
                                 leftIcon={<FaExternalLinkAlt />}
-                                colorScheme="primary"
+                                colorScheme={btnColor}
                                 w="100%"
                                 position="relative"
                                 overflow="hidden"
                                 transition="all 0.3s ease"
-                                _hover={{
-                                  bgGradient: bgGradient,
-                                  color: 'white',
-                                  transform: 'translateY(-2px)',
-                                }}
                               >
                                 Demo
                               </Button>

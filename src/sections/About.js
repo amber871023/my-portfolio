@@ -8,7 +8,7 @@ const MotionHeading = motion(Heading);
 
 export default function About() {
   return (
-    <><Box bg={useColorModeValue('white', 'gray.900')} id="about" scrollMarginTop={'50px'}>
+    <Box bg={useColorModeValue('primary.50', 'gray.900')} pb={20} id="about" scrollMarginTop={'50px'}>
       <Container maxW={{ base: 'xl', md: '5xl', lg: '7xl' }}>
         <Stack
           py={{ base: 5, md: 10 }}
@@ -89,9 +89,9 @@ export default function About() {
             align={'center'}
             textAlign='left'>
             <MotionHeading
-              fontWeight={600}
+              fontWeight={600} pt={2}
               fontSize={{ base: "3xl", md: "3xl", lg: "4xl" }}
-              bgGradient={useColorModeValue("linear(to-r, brown, primary.600)", "linear(to-l, #ffff, #4b6cb7)")} bgClip="text"
+              bgGradient="linear(to-r,teal.400, primary.400)" bgClip="text"
               initial={{ backgroundPosition: "0% 50%" }}
               animate={{ backgroundPosition: "100% 50%" }}
               transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
@@ -111,9 +111,8 @@ export default function About() {
           </Stack>
         </Stack>
       </Container>
-    </Box>
-      <Container maxW={{ base: 'xl', md: '2xl', lg: '6xl' }} my={{ base: 5, md: 10 }}>
-        <Stack direction={{ base: 'column', md: 'column', lg: 'row' }} w='full' justify={'space-between'} alignItems={'start'} spacing={10} >
+      <Container maxW={{ base: 'xl', md: '2xl', lg: '6xl' }}>
+        <Stack direction={{ base: 'column', md: 'column', lg: 'row' }} w='full' justify={'space-between'} alignItems={'start'} spacing={10}>
           {/*  Experience */}
           <Box w={'full'}>
             <Heading fontSize={{ base: 'xl', md: '3xl' }} fontWeight='200' borderBottom='2px' borderColor='primary.400'>EXPERIENCE</Heading>
@@ -149,7 +148,8 @@ export default function About() {
             />
           </Box>
         </Stack>
-      </Container ></>
+      </Container>
+    </Box>
   );
 }
 
