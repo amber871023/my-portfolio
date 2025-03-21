@@ -10,7 +10,7 @@ const NavLink = ({ children, onClick }) => {
     <Box as="a" px={2} py={1} rounded="md"
       _hover={{
         textDecoration: 'none',
-        bg: useColorModeValue('primary.300', 'gray.700'),
+        bg: useColorModeValue('blue.200', 'gray.700'),
       }}
       href={`#${children.toLowerCase()}`}
       onClick={onClick}
