@@ -3,7 +3,7 @@ import logo from '../assets/logo_white.png';
 import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
 import SpaceBackground from './SpaceBackground';
 
-const MenuItems = ['Home', 'About', 'Skills', 'Project', 'Contact'];
+const MenuItems = ['Home', 'About', 'Skills', 'Project'];
 export default function Footer() {
   return (
     <SpaceBackground>
