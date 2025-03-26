@@ -28,7 +28,7 @@ export default function About() {
               width={{ base: "220px", sm: "260px", md: "310px", lg: "370px" }}
               height={{ base: "220px", sm: "260px", md: "310px", lg: "370px" }}
               rounded="50%"
-              bg={useColorModeValue("primary.50", "blue.50")}
+              bg={useColorModeValue("teal.50", "blue.50")}
               transform="translate(10px, 10px)"
               zIndex={0}
               opacity={'70%'}
@@ -44,12 +44,12 @@ export default function About() {
               width={{ base: "230px", sm: "260px", md: "300px", lg: "350px" }}
               height={{ base: "230px", sm: "260px", md: "300px", lg: "350px" }}
               border="4px solid"
-              borderColor={useColorModeValue("primary.400", "blue.600")}
+              borderColor={useColorModeValue("teal.400", "blue.600")}
               zIndex={1}
               _before={{
                 content: '""',
                 position: "absolute",
-                bg: useColorModeValue("primary.50", "blue.50"),
+                bg: useColorModeValue("teal.50", "blue.50"),
                 opacity: "0.1",
                 zIndex: 2
               }}
@@ -69,15 +69,15 @@ export default function About() {
             {/* Decorative accent shape */}
             <Box
               position="absolute"
-              width="80px"
-              height="80px"
-              bg={useColorModeValue("primary.400", "blue.300")}
+              width={{ base: "40px", md: "80px" }}
+              height={{ base: "40px", md: "80px" }}
+              bg={useColorModeValue("teal.400", "primary.600")}
               rounded="full"
               bottom={{ base: "-5px", md: "10px" }}
               right={{ base: "20%", md: "15%" }}
               opacity="0.7"
               zIndex={0}
-              display={{ base: "none", md: "block" }}
+              display='block'
             />
           </Flex>
           {/* Intro of myself  */}

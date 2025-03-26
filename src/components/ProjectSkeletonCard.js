@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  Box, Stack, useColorModeValue, HStack, Skeleton, SkeletonText
-} from '@chakra-ui/react';
+import { Box, Stack, useColorModeValue, HStack, Skeleton, SkeletonText } from '@chakra-ui/react';
 
 export default function SkeletonCard() {
   const cardBgColor = useColorModeValue('white', 'gray.800');

@@ -1,7 +1,7 @@
 import { Box, Flex, Text, Icon, VStack, useColorModeValue } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaGitAlt, FaGithub, FaDatabase, FaCode, FaAws, FaFigma, FaPython } from "react-icons/fa";
-import { SiSass, SiJavascript, SiMongodb, SiMongoose, SiExpress, SiAdobexd, SiVuedotjs, SiCsharp } from "react-icons/si";
+import { SiSass, SiJavascript, SiMongodb, SiMongoose, SiExpress, SiAdobexd, SiVuedotjs, SiCsharp, SiBootstrap, SiMysql, SiDjango, SiFlask, } from "react-icons/si";
 import { useRef } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
@@ -21,7 +21,8 @@ const skillsData = [
       { name: "SCSS", icon: SiSass, color: "#CC6699" },
       { name: "React.js", icon: FaReact, color: "#61DAFB" },
       { name: "React Native", icon: FaReact, color: "#61DAFB" },
-      { name: "Vue.js", icon: SiVuedotjs, color: "#4FC08D" }
+      { name: "Vue.js", icon: SiVuedotjs, color: "#4FC08D" },
+      { name: "Bootstrap", icon: SiBootstrap, color: "purple.500" }
     ]
   },
   {
@@ -31,6 +32,9 @@ const skillsData = [
       { name: "RESTful API", icon: FaCode, color: "#000000" },
       { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
       { name: "Mongoose", icon: SiMongoose, color: "#880000" },
+      { name: "MySQL", icon: SiMysql, color: "#4479A1" },
+      { name: "Flask", icon: SiFlask, color: "#000000" },
+      { name: "Django", icon: SiDjango, color: "#092E20" },
     ]
   },
   {

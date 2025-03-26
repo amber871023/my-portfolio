@@ -1,4 +1,4 @@
-import { Container, Box, Heading, Text, Flex, useColorModeValue } from "@chakra-ui/react";
+import { Container, Box, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import SkillsSection from "../components/SkillsSection";
 

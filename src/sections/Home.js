@@ -1,7 +1,7 @@
 import { Container, Stack, HStack, Box, Heading, Text, Button, useColorModeValue, Link, IconButton, Icon } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import SpaceBackground from "../components/SpaceBackground";
-import { FaDownload, FaLinkedin, FaGithub, FaFacebookSquare } from 'react-icons/fa';
+import { FaDownload, FaLinkedin, FaGithub } from 'react-icons/fa';
 
 const WavingHandAnimation = () => {
   return (
@@ -35,11 +35,9 @@ export default function Home() {
             flex={1}
             bg={useColorModeValue("white", "gray.700")}
             opacity={'90%'}
-            py={{ base: 10, md: "50px" }}
-            px={{ base: 10, md: "50px" }}
+            p={{ base: 10, md: "50px" }}
             rounded="2xl"
             spacing={{ base: 4, md: 5 }}
-            textAlign="left"
             w="full"
             boxShadow={'2xl'}
           >
@@ -79,7 +77,6 @@ export default function Home() {
                 }}
                 bg="transparent" ml={4}
                 overflow="hidden"
-                transition="all 0.3s ease"
                 sx={{
                   '&::before': {
                     content: '""',
@@ -115,7 +112,7 @@ export default function Home() {
                 Contact me
               </Button>
             </Box>
-            <HStack>
+            <HStack justify={'center'}>
               <Link href='https://linkedin.com/in/amber-cheng-202396227/' isExternal>
                 <IconButton icon={<FaLinkedin />} aria-label="LinkedIn" color={useColorModeValue("black", "white")} variant="ghost" fontSize='30px' />
               </Link>
