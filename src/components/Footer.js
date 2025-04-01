@@ -37,7 +37,7 @@ export default function Footer() {
             <Link href='#home' display={{ base: 'none', md: 'block' }} >
               <Image src={logo} alt='yi ting' w="50px" h="50px" />
             </Link>
-            <Text borderTopWidth={1} borderStyle={'solid'} borderColor={'white'}>© 2024 YiTing Cheng. All rights reserved</Text>
+            <Text borderTopWidth={1} borderStyle={'solid'} borderColor={'white'}>© 2024 Amber Cheng. All rights reserved</Text>
           </VStack>
           <Spacer />
           {/* Contact info */}
