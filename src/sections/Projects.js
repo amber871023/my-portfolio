@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Box, Container, Heading, Text, Stack, useColorModeValue, SimpleGrid, keyframes } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
 import ProjectCard from '../components/ProjectCard';
@@ -87,7 +87,7 @@ export default function Projects() {
     fetchRepositories();
   }, [apiToken, username]);
 
-  const fetchTopics = async (repo) => {
+  const fetchTopics = useCallback(async (repo) => {
     try {
       const response = await fetch(`https://api.github.com/repos/${username}/${repo.name}/topics`, {
         headers: {
@@ -101,7 +101,38 @@ export default function Projects() {
       console.error(`Error fetching topics for repository ${repo.name}:`, error);
       return [];
     }
-  };
+  }, [apiToken, username]);
+
+  useEffect(() => {
+    const fetchRepositories = async () => {
+      try {
+        const response = await fetch(`https://api.github.com/users/${username}/repos`, {
+          headers: {
+            Authorization: `token ${apiToken}`
+          }
+        });
+
+        if (!response.ok) throw new Error('Failed to fetch repositories');
+        const data = await response.json();
+        const starredRepos = data.filter(repo => repo.stargazers_count > 0);
+        const sortedRepos = starredRepos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+        setRepositories(sortedRepos);
+        setIsLoading(false);
+
+        const topicsMap = {};
+        await Promise.all(starredRepos.map(async repo => {
+          topicsMap[repo.id] = await fetchTopics(repo);
+        }));
+        setTopics(topicsMap);
+      } catch (error) {
+        console.error('Error fetching repositories:', error);
+        setIsLoading(false);
+      }
+    };
+
+    fetchRepositories();
+  }, [fetchTopics]);
 
   return (
     <Box id="projects" py={{ base: 5, md: 10 }} bg={useColorModeValue('primary.50', 'gray.900')} scrollMarginTop={'50px'}>
